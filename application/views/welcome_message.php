@@ -10,17 +10,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url() . 'bootstrap-4.1.0/dist/css/bootstrap.css' ;?>" >
 
-    <title>Hello, world!</title>
+    <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
-    <h1>Hello, world!</h1>
+<div class="container.fluid">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-        src="http://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-    <script src="<?php echo base_url() . 'bootstrap-4.1.0/dist/js/bootstrap.bundle.js';?>"></script>
+
+
+
+</div>
+<script
+    src="http://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script src="<?php echo base_url() . 'bootstrap-4.1.0/dist/js/bootstrap.bundle.js';?>"></script>
 </body>
 </html>
