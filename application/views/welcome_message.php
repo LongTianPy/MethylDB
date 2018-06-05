@@ -14,10 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <div class="container.fluid">
+<?php echo $this->load->view('template/header','','true') ?>
 
 
-
-
+<?php echo $this->load->view('template/footer','','true') ?>
 </div>
 <script
     src="http://code.jquery.com/jquery-3.3.1.js"
