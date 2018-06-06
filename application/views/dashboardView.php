@@ -64,16 +64,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </table>
         </main>
     </div>
+    <footer class="mastfoot mt-auto fixed-bottom">
+        <div class="inner">
+            <p>This database is under development at this moment.
+                For more questions, please contact
+                <a href="mailto:LINbase@vt.edu?cc=tian.long@mayo.edu">Sun.Zhifu@mayo.edu</a>
+                .
+            </p>
+        </div>
+    </footer>
 </div>
-<footer class="mastfoot mt-auto">
-    <div class="inner">
-        <p>This database is under development at this moment.
-            For more questions, please contact
-            <a href="mailto:LINbase@vt.edu?cc=tian.long@mayo.edu">Sun.Zhifu@mayo.edu</a>
-            .
-        </p>
-    </div>
-</footer>
 <script src="/MethylDB/JS/jquery.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/popper.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/bootstrap.js" type="text/javascript"></script>
