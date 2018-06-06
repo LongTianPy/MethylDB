@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<footer class="page-footer brown lighten-3">
+<footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col s12">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top: 20px;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-top: 20px;">
     <div class="" style="">
         <h1>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</h1>
         <ul class="nav navbar-nav">
