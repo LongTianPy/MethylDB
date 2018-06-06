@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo base_url() . 'CSS/bootstrap.min.css'; ?>" >
-    <link rel="stylesheet" href="<?php echo base_url() . 'CSS/dashboard.css' ;?>">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" >
+    <link rel="stylesheet" href="CSS/dashboard.css">
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
@@ -53,14 +53,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </main>
     </div>
 </div>
-<script src="<?php echo base_url() . 'JS/jquery.js'; ?>" type="text/javascript"></script>
-<script src="<?php echo base_url() . 'JS/popper.js'; ?>" type="text/javascript"></script>
-<script src="<?php echo base_url() . 'JS/bootstrap.js'; ?>" type="text/javascript"></script>
-<script src="<?php echo base_url() . 'JS/feather.js'; ?>" type="text/javascript"></script>
+<script src="JS/jquery.js" type="text/javascript"></script>
+<script src="JS/popper.js" type="text/javascript"></script>
+<script src="JS/bootstrap.js" type="text/javascript"></script>
+<script src="JS/feather.js" type="text/javascript"></script>
 <script>
     feather.replace()
 </script>
-<script src="<?php echo base_url() . 'JS/chart.js'; ?>" type="text/javascript"></script>
+<script src="JS/chart.js" type="text/javascript"></script>
 <script>
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {

@@ -42,8 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </footer>
 </div>
-<script type="text/javascript" src="<?php echo base_url() . 'JS/jquery.js'; ?>" ></script>
-<script src="<?php echo base_url() . 'JS/popper.js'; ?>" type="text/javascript"></script>
-<script src="<?php echo base_url() . 'JS/bootstrap.js'; ?>" type="text/javascript"></script>
+<script type="text/javascript" src="JS/jquery.js" ></script>
+<script src='JS/popper.js' type="text/javascript"></script>
+<script src='JS/bootstrap.js' type="text/javascript"></script>
 </body>
 </html>
