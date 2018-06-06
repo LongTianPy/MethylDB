@@ -13,7 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?php echo base_url();?>">MethylDB</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">MethylDB</a>
+    <span class="w-100"></span>
+    <ul class="px-3"></ul>
 </nav>
 <div class="container-fluid">
     <div class="row">
