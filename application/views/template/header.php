@@ -12,5 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link" href="about">About</a>
             </li>
         </ul>
+        <span class="navbar-text">
+            Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery
+        </span>
     </div>
 </nav>
