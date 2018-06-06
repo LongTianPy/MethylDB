@@ -53,14 +53,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </main>
     </div>
 </div>
-<script src="JS/jquery.js" type="text/javascript"></script>
-<script src="JS/popper.js" type="text/javascript"></script>
-<script src="JS/bootstrap.js" type="text/javascript"></script>
-<script src="JS/feather.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/jquery.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/popper.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/bootstrap.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/feather.js" type="text/javascript"></script>
 <script>
     feather.replace()
 </script>
-<script src="JS/chart.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/chart.js" type="text/javascript"></script>
 <script>
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {

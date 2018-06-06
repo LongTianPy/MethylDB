@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/cover.css">
+    <link rel="stylesheet" href="/MethylDB/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/MethylDB/CSS/cover.css">
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
@@ -42,8 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </footer>
 </div>
-<script type="text/javascript" src="JS/jquery.js" ></script>
-<script src='JS/popper.js' type="text/javascript"></script>
-<script src='JS/bootstrap.js' type="text/javascript"></script>
+<script type="text/javascript" src="/MethylDB/JS/jquery.js" ></script>
+<script src='/MethylDB/JS/popper.js' type="text/javascript"></script>
+<script src='/MethylDB/JS/bootstrap.js' type="text/javascript"></script>
 </body>
 </html>
