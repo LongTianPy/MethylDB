@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h3 class="masthead-brand">MethylDB</h3>
         <nav class="nav nav-masthead">
             <a class="nav-link" href="<?php echo base_url();?>">Home</a>
-            <a class="nav-link" href="<?php echo base_url() . 'index.php/dashboard'?>">Dashboard</a>
-            <a class="nav-link" href="<?php echo base_url() . 'index.php/about'?>">About</a>
+            <a class="nav-link" href="application/dashboard">Dashboard</a>
+            <a class="nav-link" href="application/about">About</a>
         </nav>
     </div>
 </header>
@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h1 class="cover-heading"> MethylDB</h1>
     <p class="lead">Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</p>
     <p class="lead">
-        <a href="<?php echo base_url() . 'index.php/dashboard'?>" class="btn btn-lg btn-secondary">
+        <a href="application/dashboard" class="btn btn-lg btn-secondary">
             Go to Dashboard
         </a>
     </p>
