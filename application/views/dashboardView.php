@@ -9,12 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/MethylDB/CSS/bootstrap.min.css" >
     <link rel="stylesheet" href="/MethylDB/CSS/dashboard.css">
-    <style>
-        .mastfoot {
-            color: rgba(255, 255, 255, .5);
-        }
-
-    </style>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
@@ -64,15 +58,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </table>
         </main>
     </div>
-    <footer class="mastfoot mt-auto fixed-bottom">
-        <div class="inner">
-            <p>This database is under development at this moment.
-                For more questions, please contact
-                <a href="mailto:LINbase@vt.edu?cc=tian.long@mayo.edu">Sun.Zhifu@mayo.edu</a>
-                .
-            </p>
-        </div>
-    </footer>
 </div>
 <script src="/MethylDB/JS/jquery.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/popper.js" type="text/javascript"></script>
