@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
-<div class="container.fluid">
+<div class="container">
 <?php $this->load->view('template/header'); ?>
 
 
