@@ -9,7 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/MethylDB/CSS/bootstrap.min.css" >
     <link rel="stylesheet" href="/MethylDB/CSS/dashboard.css">
-    <link rel="stylesheet" href="/MethylDB/CSS/cover.css">
+    <style>
+        .mastfoot {
+            color: rgba(255, 255, 255, .5);
+        }
+
+    </style>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
