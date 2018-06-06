@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">MethylDB</a>
-    <span class="w-100"><p>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</p></span>
+    <span class="w-100 navbar-text">Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</span>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="index.php/About">About</a>
