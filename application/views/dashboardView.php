@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <label for="cpg_id">CpG probe ID</label>
                                             <input type="text" class="form-control" id="cpg_id" placeholder="e.g. cg00000029" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" onclick="javascript:get_cpg_id(); return false">Go</button>
+                                        <button type="submit" class="btn btn-primary">Go</button>
                                     </form>
                                 </div>
                             </div>
