@@ -1,3 +1,4 @@
+/*
 $(function () {
     $(document).ready(function() {
         $('#form_search_by_id').submit(function (event) {
@@ -60,4 +61,4 @@ $(function () {
             })
         })
     });
-})
+})*/
