@@ -52,12 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
                                 <div class="card-body">
                                     <!--                                --><?php //echo $search_by_id ;?>
-                                    <form method="post">
+                                    <form method="post" id="form_search_by_id">
                                         <div class="form-group">
                                             <label for="cpg_id">CpG probe ID</label>
                                             <input type="text" class="form-control" id="cpg_id" placeholder="e.g. cg00000029" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Go</button>
+                                        <button type="submit" class="btn btn-primary" onclick="javascript:get_cpg_id(); return false">Go</button>
                                     </form>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
-            <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
+            <canvas class="my-4 w-100" id="myChart" width="900" height="600"></canvas>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">
 
@@ -121,6 +121,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
     feather.replace()
 </script>
+<script src="/MethylDB/JS/plotly.js/dist/plotly.js" type="text/javascript"></script>
+<!--<script src="distrochart.js" charset="utf-8"></script>
 <script src="/MethylDB/JS/chart.js" type="text/javascript"></script>
 <script>
     var ctx = document.getElementById("myChart");
@@ -150,6 +152,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
     });
-</script>
+</script>-->
 </body>
 </html>
