@@ -5,6 +5,10 @@ class Dashboard extends CI_Controller {
     public function index(){
         $this->load->view('dashboardView');
     }
-}
 
+    public function search_by_id_tab(){
+        $tab = "";
+        $tab .= "<form >"
+    }
+}
 ?>

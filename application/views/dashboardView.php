@@ -32,11 +32,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             Dashboard <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="search_functions">
                         <a class="nav-link" href="#">
                             <span data-feather="file"></span>
                             Search
                         </a>
+                        <div class="card">
+                            <div class="card-header" id="search_by_id">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_id" aria-expanded="false" aria-controls="form_by_id">
+                                        Search by CpG ID
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
+                                <div class="card-body">
+                                    <!--                                --><?php //echo $search_by_id ;?>
+                                    search by CpG ID content
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="search_by_gene">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_gene" aria-expanded="false" aria-controls="form_by_gene">
+                                        Search by gene name
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">
+                                <div class="card-body">
+<!--                                    --><?php //echo $search_by_gene ;?>
+                                    search by gene name content
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="search_by_region">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_region" aria-expanded="false" aria-controls="form_by_region">
+                                        Search by genomic region
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
+                                <div class="card-body">
+<!--                                    --><?php //echo $search_by_region; ?>
+                                    Search by genomic region content
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
