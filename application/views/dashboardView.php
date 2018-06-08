@@ -27,20 +27,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
+                        <h5>
                         <a class="nav-link active" href="#">
                             <span data-feather="home"></span>
-                            <h3>
-                                Dashboard <span class="sr-only">(current)</span>
-                            </h3>
+                            Dashboard <span class="sr-only">(current)</span>
                         </a>
+                        </h5>
                     </li>
                     <li class="nav-item" id="search_functions">
+                        <h5>
                         <a class="nav-link" href="#">
-                            <h4>
-                                <span data-feather="file"></span>
-                                Search
-                            </h4>
+                            <span data-feather="file"></span>
+                            Search
                         </a>
+                        </h5>
                         <div class="card">
                             <div class="card-header" id="search_by_id">
                                 <h6 class="mb-0">
