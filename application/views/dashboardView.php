@@ -51,10 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
                                 <div class="card-body">
                                     <!--                                --><?php //echo $search_by_id ;?>
-                                    <form method="get" id="form_search_by_id" action="Dashboard">
+                                    <form method="post" id="form_search_by_id" action="Dashboard">
                                         <div class="form-group">
                                             <label for="cpg_id">CpG probe ID</label>
-                                            <input type="text" class="form-control" id="cpg_id" placeholder="e.g. cg00000029" required>
+                                            <input type="text" class="form-control" name="cpg_id" id="cpg_id" placeholder="e.g. cg00000029" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Go</button>
                                     </form>
