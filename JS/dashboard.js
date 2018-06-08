@@ -7,6 +7,7 @@ $(function () {
                 type: 'post',
                 data:{cgp_id:'cgp_id'},
                 success: function(datafile,cpg_id){
+                    document.writeln("something;s going on.");
                     function makeplot(){
                         Plot.d3.csv(datafile,function(data){processData(data)});
                     };
