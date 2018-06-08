@@ -3,7 +3,7 @@ $(function () {
         $('#form_search_by_id').submit(function (event) {
             var cgp_id = $('#cpg_id').val();
             $.ajax({
-                url: 'Dashboard',
+                url: 'index.php/Dashboard',
                 type: 'post',
                 data:{cgp_id:'cgp_id'},
                 success: function(datafile,cpg_id){
