@@ -29,13 +29,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
                             <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
+                            <h3>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </h3>
                         </a>
                     </li>
                     <li class="nav-item" id="search_functions">
                         <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Search
+                            <h4>
+                                <span data-feather="file"></span>
+                                Search
+                            </h4>
                         </a>
                         <div class="card">
                             <div class="card-header" id="search_by_id">
