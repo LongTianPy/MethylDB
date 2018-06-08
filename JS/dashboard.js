@@ -1,7 +1,7 @@
 $(function () {
     $(document).ready(function() {
         $('#form_search_by_id').submit(function (event) {
-            var cgp_id = $('#cpg_id').val();
+            var cpg_id = $('#cpg_id').val();
             $.ajax({
                 url: 'index.php/Dashboard',
                 type: 'POST',
