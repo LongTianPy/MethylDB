@@ -4,8 +4,8 @@ $(function () {
             var cgp_id = $('#cpg_id').val();
             $.ajax({
                 url: 'index.php/Dashboard',
-                type: 'post',
-                data:{cgp_id:'cgp_id'},
+                type: 'POST',
+                data:{'cpg_id':cpg_id},
                 success: function(datafile,cpg_id){
                     document.writeln("something;s going on.");
                     function makeplot(){

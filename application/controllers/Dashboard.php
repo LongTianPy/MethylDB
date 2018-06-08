@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller {
     }
 
     public function search_by_id(){
+        session_start();
         $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
         $output = "/home/long-lamp-username/MethylDB/result/result.txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_data.py";
