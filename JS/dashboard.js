@@ -3,9 +3,9 @@ $(function () {
         $('#form_search_by_id').submit(function (event) {
             var cgp_id = $('#cpg_id').val();
             $.ajax({
-                url: 'Dashboard/search_by_id',
+                url: 'Dashboard',
                 type: 'post',
-                data: cgp_id,
+                data:{cgp_id:'cgp_id'},
                 success: function(datafile,cpg_id){
                     function makeplot(){
                         Plot.d3.csv(datafile,function(data){processData(data)});
