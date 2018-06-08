@@ -9,7 +9,7 @@ $(function () {
                 success: function(datafile,cpg_id){
                     document.writeln("something;s going on.");
                     function makeplot(){
-                        Plot.d3.csv(datafile,function(data){processData(data)});
+                        Plotly.d3.csv(datafile,function(data){processData(data)});
                     };
                     function processData(allRows){
                         console.log(allRows);
