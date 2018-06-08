@@ -9,7 +9,6 @@ $(function () {
                 success: function(datafile,cpg_id){
                     function makeplot(){
                         Plot.d3.csv(datafile,function(data){processData(data)});
-
                     };
                     function processData(allRows){
                         console.log(allRows);
