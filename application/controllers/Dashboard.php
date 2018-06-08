@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
 
     public function search_by_id_tab(){
         $tab = "";
-        $tab .= "<form >";
+
     }
 }
 ?>
