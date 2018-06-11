@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller {
         $this->session->set_userdata($datafile);
         $this->session->set_userdata($cpg_id);
         echo "
-        <script style='display:none;'>var datafile={$datafile},cpg_id={$cpg_id};</script>
+        <script style='display:none;'>var datafile='{$datafile}',cpg_id={$cpg_id};</script>
         ";
     }
 
