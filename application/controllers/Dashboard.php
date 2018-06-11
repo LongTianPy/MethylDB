@@ -48,8 +48,8 @@ class Dashboard extends CI_Controller {
 //        <script type='text/javascript'>var datafile='{$datafile}';
 //        var cpg_id={$cpg_id};</script>
 //        ";
-        echo "<a id='datafile' value='{$datafile}' style='display: none'>{$datafile}</a>";
-        echo "<a id='cpg_id' value='{$cpg_id}' style='display: none'>";
+        echo "<a id='datafile' style='display: none'>{$datafile}</a>";
+        echo "<a id='cpg_id' style='display: none'>{$cpg_id}</a>";
     }
 
 }
