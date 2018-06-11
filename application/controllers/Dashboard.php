@@ -33,7 +33,7 @@ class Dashboard extends CI_Controller {
         $result = $this->db->query($sql)->row(0);
         $chr = $result->CHR;
         $position = $this->MAPINFO;
-        settype($position,"integer");
+//        settype($position,"integer");
         $from = $position-1;
         $to = $position+1;
         $cmd = "tabix {$input} {$chr}:{$from}-{$to} -h > {$output}";
