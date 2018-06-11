@@ -33,7 +33,7 @@ class Dashboard extends CI_Controller {
         exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql)->row(0);
         $chr = $result->CHR;
-        $position = $this->MAPINFO;
+        $position = $result->MAPINFO;
 //        settype($position,"integer");
         $from = $position-1;
         $to = $position+1;
