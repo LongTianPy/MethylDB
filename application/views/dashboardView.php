@@ -117,6 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="/MethylDB/JS/popper.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/bootstrap.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/feather.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>
 <script>
     feather.replace()
 </script>
