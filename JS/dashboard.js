@@ -1,9 +1,9 @@
 function makeplot(){
-    Plotly.d3.csv(document.getElementById(),function(data){processData(data)});
+    Plotly.d3.csv(document.getElementById('datafile'),function(data){processData(data)});
 };
 function processData(allRows){
     console.log(allRows);
-    var acronym_tumor=[], acrynom_normal=[],value_tumor=[],value_normal=[], cpg_id='';
+    var acronym_tumor=[], acronym_normal=[],value_tumor=[],value_normal=[], cpg_id='';
     for (var i=0; i<allRows.length;i++){
         row=allRows[i];
         if (row["TumorNormal"]=='Tumor'){
@@ -11,15 +11,15 @@ function processData(allRows){
             value_tumor.push(row["Value"]);
         }
         else {
-            acrynom_normal.push(row["Acronym"]);
+            acronym_normal.push(row["Acronym"]);
             value_normal.push(row["Value"]);
         }
 
     }
-    console.log("Acronym_tumor",acronym_tumor,"Acronym_normal",acrynom_normal,"Value_tumor",value_tumor,"Value_normal",value_normal);
-    makePlotly(acronym_tumor,value_tumor,acrynom_normal,value_normal);
+    console.log("Acronym_tumor",acronym_tumor,"Acronym_normal",acronym_normal,"Value_tumor",value_tumor,"Value_normal",value_normal);
+    makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal);
 }
-function makePlotly(acronym_tumor,value_tumor,acrynom_normal,value_normal){
+function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     var plotDiv = document.getElementById("myChart");
     var trace1={
         y: value_tumor,
@@ -30,7 +30,7 @@ function makePlotly(acronym_tumor,value_tumor,acrynom_normal,value_normal){
     };
     var trace2 = {
         y: value_normal,
-        x: acrynom_normal,
+        x: acronym_normal,
         name: "Normal",
         marker: {color: '#3D9970'},
         type: 'box'
