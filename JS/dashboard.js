@@ -44,6 +44,6 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
         },
         boxmode: 'group'
     }
-    Plotly.newPlot('myChart',data,layout);
+    Plotly.plot('myChart',data,layout);
 }
 makeplot();
