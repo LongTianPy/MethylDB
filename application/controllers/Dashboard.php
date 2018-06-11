@@ -28,7 +28,7 @@ class Dashboard extends CI_Controller {
         $cpg_id = $this->input->post('cpg_id');
         settype($cpg_id,'string');
         $cpg_id = "'".$cpg_id."'";
-        $sql = "select CHR,MAPINFO from Probeset where Probeset_ID='{$cpg_id}'";
+        $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
         exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql)->row(0);
         $chr = $result->CHR;
