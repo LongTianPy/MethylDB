@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
     public function index(){
-        if(isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
+        if(isset($_POST['cpg_id'])){
             $this->search_by_id();
         }
         $this->load->view('dashboardView');

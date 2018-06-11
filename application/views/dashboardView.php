@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
-            <div class="my-4 w-100" id="myChart" width="900" height="600"></div>
+            <div class="my-4 w-100" id="myChart" width="900" height="600" style="min-height: 600px;"></div>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">
 
