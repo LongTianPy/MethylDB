@@ -27,6 +27,7 @@ class Dashboard extends CI_Controller {
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_data.py";
         $cpg_id = $_POST['cpg_id'];
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID='{$cpg_id}'";
+        exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql)->row(0);
         $chr = $result->CHR;
         $position = $this->MAPINFO;
@@ -34,6 +35,7 @@ class Dashboard extends CI_Controller {
         $from = $position-1;
         $to = $position+1;
         $cmd = "tabix {$input} {$chr}:{$from}-{$to} -h > {$output}";
+        exec("echo {$cmd} > /home/long-lamp-username/MethylDB/result/tabix_cmd.txt");
         exec($cmd);
         $cmd = "python {$python_scipt} {$output}";
         $datafile = shell_exec($cmd);
