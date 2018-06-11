@@ -1,5 +1,5 @@
 function makeplot(){
-    Plotly.d3.csv(document.getElementById('datafile'),function(data){processData(data)});
+    Plotly.d3.csv(document.getElementById('datafile').innerHTML,function(data){processData(data)});
 };
 function processData(allRows){
     console.log(allRows);
