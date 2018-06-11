@@ -22,79 +22,79 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <h5>
-                        <a class="nav-link active" href="#">
-                            <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
-                        </a>
-                        </h5>
-                    </li>
-                    <li class="nav-item" id="search_functions">
-                        <h5>
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Search
-                        </a>
-                        </h5>
-                        <div class="card">
-                            <div class="card-header" id="search_by_id">
-                                <h6 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_id" aria-expanded="false" aria-controls="form_by_id">
-                                        Search by CpG ID
-                                    </button>
-                                </h6>
-                            </div>
-                            <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
-                                <div class="card-body">
-                                    <!--                                --><?php //echo $search_by_id ;?>
-                                    <form method="post" id="form_search_by_id" action="Dashboard">
-                                        <div class="form-group">
-                                            <label for="cpg_id">CpG probe ID</label>
-                                            <input type="text" class="form-control" name="cpg_id" id="cpg_id" placeholder="e.g. cg00000029" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Go</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="search_by_gene">
-                                <h6 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_gene" aria-expanded="false" aria-controls="form_by_gene">
-                                        Search by gene name
-                                    </button>
-                                </h6>
-                            </div>
-                            <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">
-                                <div class="card-body">
-<!--                                    --><?php //echo $search_by_gene ;?>
-                                    search by gene name content
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="search_by_region">
-                                <h6 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_region" aria-expanded="false" aria-controls="form_by_region">
-                                        Search by genomic region
-                                    </button>
-                                </h6>
-                            </div>
-                            <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
-                                <div class="card-body">
-<!--                                    --><?php //echo $search_by_region; ?>
-                                    Search by genomic region content
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<!--        <nav class="col-md-2 d-none d-md-block bg-light sidebar">-->
+<!--            <div class="sidebar-sticky">-->
+<!--                <ul class="nav flex-column">-->
+<!--                    <li class="nav-item">-->
+<!--                        <h5>-->
+<!--                        <a class="nav-link active" href="#">-->
+<!--                            <span data-feather="home"></span>-->
+<!--                            Dashboard <span class="sr-only">(current)</span>-->
+<!--                        </a>-->
+<!--                        </h5>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item" id="search_functions">-->
+<!--                        <h5>-->
+<!--                        <a class="nav-link" href="#">-->
+<!--                            <span data-feather="file"></span>-->
+<!--                            Search-->
+<!--                        </a>-->
+<!--                        </h5>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="search_by_id">-->
+<!--                                <h6 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_id" aria-expanded="false" aria-controls="form_by_id">-->
+<!--                                        Search by CpG ID-->
+<!--                                    </button>-->
+<!--                                </h6>-->
+<!--                            </div>-->
+<!--                            <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >-->
+<!--                                <div class="card-body">-->
+<!--                                    <!--                                -->--><?php ////echo $search_by_id ;?>
+<!--                                    <form method="post" id="form_search_by_id" action="Dashboard">-->
+<!--                                        <div class="form-group">-->
+<!--                                            <label for="cpg_id">CpG probe ID</label>-->
+<!--                                            <input type="text" class="form-control" name="cpg_id" id="cpg_id" placeholder="e.g. cg00000029" required>-->
+<!--                                        </div>-->
+<!--                                        <button type="submit" class="btn btn-primary">Go</button>-->
+<!--                                    </form>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="search_by_gene">-->
+<!--                                <h6 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_gene" aria-expanded="false" aria-controls="form_by_gene">-->
+<!--                                        Search by gene name-->
+<!--                                    </button>-->
+<!--                                </h6>-->
+<!--                            </div>-->
+<!--                            <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">-->
+<!--                                <div class="card-body">-->
+<!--<!--                                    -->--><?php ////echo $search_by_gene ;?>
+<!--                                    search by gene name content-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header" id="search_by_region">-->
+<!--                                <h6 class="mb-0">-->
+<!--                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_region" aria-expanded="false" aria-controls="form_by_region">-->
+<!--                                        Search by genomic region-->
+<!--                                    </button>-->
+<!--                                </h6>-->
+<!--                            </div>-->
+<!--                            <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">-->
+<!--                                <div class="card-body">-->
+<!--<!--                                    -->--><?php ////echo $search_by_region; ?>
+<!--                                    Search by genomic region content-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </nav>-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
