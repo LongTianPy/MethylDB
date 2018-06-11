@@ -27,7 +27,7 @@ class Dashboard extends CI_Controller {
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_data.py";
         $cpg_id = $_POST['cpg_id'];
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID='{$cpg_id}'";
-        $result = $this->db->query($sql)->result(0);
+        $result = $this->db->query($sql)->row(0);
         $chr = $result->CHR;
         $position = $this->MAPINFO;
         settype($position,"integer");
