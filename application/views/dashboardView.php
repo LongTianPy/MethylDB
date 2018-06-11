@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
                                 <div class="card-body">
-                                    <!--                                --><?php //echo $search_by_id ;?>
+<!--                                    <!--                                --><?php ////echo $search_by_id ;?>
                                     <form method="post" id="form_search_by_id" action="Dashboard">
                                         <div class="form-group">
                                             <label for="cpg_id">CpG probe ID</label>
@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">
                                 <div class="card-body">
-<!--                                    --><?php //echo $search_by_gene ;?>
+<!--<!--                                    --><?php ////echo $search_by_gene ;?>
                                     search by gene name content
                                 </div>
                             </div>
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
                                 <div class="card-body">
-<!--                                    --><?php //echo $search_by_region; ?>
+<!--<!--                                    --><?php ////echo $search_by_region; ?>
                                     Search by genomic region content
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
-            <div class="my-4 w-100" id="myChart" width="900" height="600"></div>
+            <canvas class="my-4 w-100" id="myChart" width="900" height="600"></canvas>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">
 
