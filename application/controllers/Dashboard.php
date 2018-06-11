@@ -26,7 +26,7 @@ class Dashboard extends CI_Controller {
         $output = "/home/long-lamp-username/MethylDB/result/result.txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_data.py";
         $cpg_id = $_POST['cpg_id'];
-        $sql = 'select CHR,MAPINFO from Probeset where Probeset_ID="{$cpg_id}"';
+        $sql = "select CHR,MAPINFO from Probeset where Probeset_ID='{$cpg_id}'";
         exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql)->row(0);
         $chr = $result->CHR;
