@@ -43,7 +43,7 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
             zeroline: false
         },
         xaxis: {
-            tickangle: 90
+            tickangle: 270
         },
         boxmode: 'group'
     }
