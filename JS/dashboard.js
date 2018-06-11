@@ -42,8 +42,11 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
             title: 'DNA Methylation level',
             zeroline: false
         },
+        xaxis: {
+            tickangle: 90
+        },
         boxmode: 'group'
     }
-    Plotly.plot('myChart',data,layout);
+    Plotly.react('myChart',data,layout);
 }
 makeplot();
