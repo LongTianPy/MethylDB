@@ -60,6 +60,15 @@ class Dashboard extends CI_Controller {
         return $range;
     }
 
+    public function create_buttons($data){
+        $cpg_ids = explode(",",$data['cpg_ids']);
+        $buttons = "<div class='btn-group w-100' role='group'>";
+        foreach ($cpg_ids as $cpg_id) {
+            echo "<button type='button' class='btn btn-secondary' value='{$cpg_id}' onclick='javascript:get_cpg(this.value)'>{$cpg_id}</button>";
+        }
+    }
+
+
     public function search_by_id(){
         $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
