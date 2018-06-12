@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/MethylDB/CSS/bootstrap.min.css" >
     <link rel="stylesheet" href="/MethylDB/CSS/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.css">
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
@@ -54,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <form method="post" id="form_search_by_id" action="Dashboard">
                                         <div class="form-group">
                                             <label for="cpg_id">CpG probe ID</label>
-                                            <input type="text" class="form-control" name="cpg_id" id="cpg_id" placeholder="e.g. cg00000029" required>
+                                            <input type="text" class="form-control" name="cpg_id" id="cpg_id" placeholder="e.g. cg00000029">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Go</button>
                                     </form>
@@ -71,8 +72,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">
                                 <div class="card-body">
-<!--<!--                                    --><?php ////echo $search_by_gene ;?>
-                                    search by gene name content
+                                    <form method="post" id="form_search_by_gene" action="Dashboard">
+                                        <div class="form-group">
+                                            <label for="gene">Gene name</label>
+                                            <input type="text" class="form-control" name="gene" id="gene" placeholder="e.g. EGFR">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Go</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -86,8 +92,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
                                 <div class="card-body">
-<!--<!--                                    --><?php ////echo $search_by_region; ?>
-                                    Search by genomic region content
+                                    <form method="post" id="form-search_by_region" action="Dashboard">
+                                        <div class="form-group">
+                                            <label for="chr_id">Chromosome</label>
+                                            <select class="form-control" id="chr_id">
+                                                <?php
+                                                for ($i=1;$i<=22;$i++) {
+                                                    echo "<option>{$i}</option>";
+                                                }
+                                                ?>
+                                                <option>X</option>
+                                                <option>Y</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="from">From</label>
+                                            <input type="text" id="from" class="form-control" name="from">
+                                        </div>
+                                        <div class="form-control">
+                                            <label for="to">To</label>
+                                            <input type="text" id="to" class="form-control" name="to">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Go</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -105,6 +132,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
+            <?php
+            if (isset($range)) {
+                echo "<div id='range_bar'>";
+                echo $range;
+                echo "</div>";
+            }
+            ?>
             <div class="my-4 w-100" id="myChart" width="900" height="600" style="min-height: 600px;"></div>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">
@@ -120,6 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
     feather.replace()
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js" type="text/javascript"></script>
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
 <script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>
 <!--<script src="distrochart.js" charset="utf-8"></script>

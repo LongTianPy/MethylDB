@@ -1,3 +1,9 @@
+function get_cpg(range_val) {
+    var d = document.createElement('a');
+    d.setAttribute('id','datafile');
+    d.value = range_val;
+}
+
 function makeplot(){
     var file = document.getElementById('datafile').innerHTML;
     Plotly.d3.csv(file,function(data){processData(data)});
