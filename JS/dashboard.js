@@ -5,7 +5,7 @@ function get_cpg(range_val) {
 }
 
 function makeplot(){
-    var file = document.getElementById('datafile').innerHTML;
+    var file = document.getElementById('datafile').value;
     Plotly.d3.csv(file,function(data){processData(data)});
 };
 function processData(allRows){

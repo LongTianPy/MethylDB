@@ -79,8 +79,8 @@ class Dashboard extends CI_Controller {
 //        <script type='text/javascript'>var datafile='{$datafile}';
 //        var cpg_id={$cpg_id};</script>
 //        ";
-        echo "<a id='datafile' style='display: none'>{$datafile}</a>";
-        echo "<a id='cpg_id' style='display: none'>{$cpg_id}</a>";
+        echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
+        echo "<a id='cpg_id' style='display: none' value='{$cpg_id}'>{$cpg_id}</a>";
     }
 
     public function search_by_gene(){
