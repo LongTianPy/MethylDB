@@ -41,8 +41,8 @@ class Dashboard extends CI_Controller {
         $start = $data['from'];
         $end = $data['to'];
         $length = $end - $start;
-        $data_slider_ticks = "[" . $start . implode(",",$positions) . $end . "]";
-        $data_slider_ticks_labels = "[" . $start .$data['cpg_ids'] . $end . "]";
+        $data_slider_ticks = "[" . $start. "," . implode(",",$positions) . $end . "]";
+        $data_slider_ticks_labels = "[" . $start . "," .$data['cpg_ids'] . $end . "]";
         $percentages = [];
         foreach ($positions as $pos){
             $percentages[] = ($pos-$start)/$length * 100;
