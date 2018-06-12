@@ -70,6 +70,7 @@ class Dashboard extends CI_Controller {
         foreach ($cpg_ids as $cpg_id) {
             echo "<button type='button' class='btn btn-secondary' value='{$cpg_id}' onclick='javascript:get_cpg(this.value)'>{$cpg_id}</button>";
         }
+        $buttons = "</div>";
     }
 
 
