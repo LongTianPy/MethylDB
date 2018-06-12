@@ -123,8 +123,11 @@ class Dashboard extends CI_Controller {
         $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_multi.py";
-        $gene = $this->input->post('gene');
-        $gene = $this->input->get('gene');
+        if (isset($_POST['gene'])){
+            $gene = $this->input->post('gene');
+        }else {
+            $gene = $this->input->get('gene');
+        }
         settype($gene,'string');
         strtoupper($gene);
         $sql = "select * from Gene where gene='{$gene}'";
