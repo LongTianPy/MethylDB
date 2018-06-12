@@ -72,7 +72,7 @@ class Dashboard extends CI_Controller {
         $cpg_ids = explode(",",$data['cpg_ids']);
         $gene = $data['gene'];
         $buttons = "<div class='btn-group btn-group-sm w-100' role='group' >";
-        $buttons .= "<label>{$gene}&nbsp   </label>";
+        $buttons .= "<label>{$gene}&emsp   </label>";
         foreach ($cpg_ids as $cpg_id) {
             $buttons .= "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 3em;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'>      </button>";
         }
