@@ -75,6 +75,7 @@ class Dashboard extends CI_Controller {
             $buttons .= "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='font-size: small'>{$cpg_id}</button>";
         }
         $buttons = "</div>";
+        echo $buttons;
         return $buttons;
     }
 
