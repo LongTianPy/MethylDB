@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
             $page_data = array(
                 'script' => $script,
             );
-            $this->load->view('dashboardView');
+            $this->load->view('dashboardView',$page_data);
         }elseif (isset($_POST['chr_id']) and isset($_POST['from']) and isset($_POST['to']) and !empty($_POST['chr_id']) and !empty($_POST['from']) and !empty($_POST['to']) ){
             $this->search_by_region();
             $this->load->view('dashboardView');
