@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller {
         }elseif (isset($_POST['chr_id']) and isset($_POST['from']) and isset($_POST['to']) and !empty($_POST['chr_id']) and !empty($_POST['from']) and !empty($_POST['to']) ){
             $this->search_by_region();
             $this->load->view('dashboardView');
-        }elseif (isset($_POST['gene']) and !empty($_POST['gene'])){
+        }elseif (isset($_POST['gene']) or isset($_GET['gene'])){
             $data = $this->search_by_gene();
             $range = $this->create_range_bar($data);
             $page_data = array(
@@ -87,6 +87,7 @@ class Dashboard extends CI_Controller {
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_multi.py";
         $gene = $this->input->post('gene');
+        $gene = $this->input->get('gene');
         settype($gene,'string');
         strtoupper($gene);
         $sql = "select * from Gene where gene='{$gene}'";
