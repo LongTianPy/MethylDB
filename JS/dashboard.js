@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 
     function makeplot(){
-        var file = document.getElementById('datafile').value;
+        var file = document.getElementById('datafile').innerHTML;
         Plotly.d3.csv(file,function(data){processData(data)});
     };
     function processData(allRows){
