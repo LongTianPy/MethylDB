@@ -38,6 +38,7 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     };
     var data = [trace1,trace2];
     var layout = {
+        title: document.getElementById('cpg_id').innerHTML,
         yaxis: {
             title: 'DNA Methylation level',
             zeroline: false

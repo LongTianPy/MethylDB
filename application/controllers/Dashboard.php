@@ -85,8 +85,13 @@ class Dashboard extends CI_Controller {
         $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_data.py";
-        $cpg_id = $this->input->post('cpg_id');
-        $cpg_id = $this->input->get('cpg_id');
+        if (isset($_POST['cpg_id'])){
+            $return_cpg = $this->input->post('cpg_id');
+            $cpg_id = $this->input->post('cpg_id');
+        } else {
+            $return_cpg = $this->input->get('cpg_id');
+            $cpg_id = $this->input->get('cpg_id');
+        }
         settype($cpg_id,'string');
         $cpg_id = "'".$cpg_id."'";
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
@@ -109,7 +114,7 @@ class Dashboard extends CI_Controller {
 //        var cpg_id={$cpg_id};</script>
 //        ";
         echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
-        echo "<a id='cpg_id' style='display: none' value='{$cpg_id}'>{$cpg_id}</a>";
+        echo "<a id='cpg_id' style='display: none' value='{$return_cpg}'>{$return_cpg}</a>";
         $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
         return $call_this_script;
     }

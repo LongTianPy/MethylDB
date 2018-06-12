@@ -1,8 +1,8 @@
 function makeplot(cpg_id){
     var file = "/MethylDB/Result/" + cpg_id + ".txt";
-    Plotly.d3.csv(file,function(data){processData(data)});
+    Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
 };
-function processData(allRows){
+function processData(allRows,cpg_id){
     console.log(allRows);
     var acronym_tumor=[], acronym_normal=[],value_tumor=[],value_normal=[], cpg_id='';
     for (var i=0; i<allRows.length;i++){
@@ -18,9 +18,9 @@ function processData(allRows){
 
     }
     console.log("Acronym_tumor",acronym_tumor,"Acronym_normal",acronym_normal,"Value_tumor",value_tumor,"Value_normal",value_normal);
-    makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal);
+    makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal,cpg_id);
 }
-function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
+function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal,cpg_id){
     var plotDiv = document.getElementById("myChart");
     var trace1={
         y: value_tumor,
@@ -38,6 +38,7 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     };
     var data = [trace1,trace2];
     var layout = {
+        title: cpg_id,
         yaxis: {
             title: 'DNA Methylation level',
             zeroline: false
