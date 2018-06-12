@@ -4,7 +4,7 @@ function makeplot(cpg_id){
 };
 function processData(allRows,cpg_id){
     console.log(allRows);
-    var acronym_tumor=[], acronym_normal=[],value_tumor=[],value_normal=[], cpg_id='';
+    var acronym_tumor=[], acronym_normal=[],value_tumor=[],value_normal=[];
     for (var i=0; i<allRows.length;i++){
         row=allRows[i];
         if (row["TumorNormal"]=='Tumor'){
@@ -17,7 +17,7 @@ function processData(allRows,cpg_id){
         }
 
     }
-    console.log("Acronym_tumor",acronym_tumor,"Acronym_normal",acronym_normal,"Value_tumor",value_tumor,"Value_normal",value_normal);
+    console.log("Acronym_tumor",acronym_tumor,"Acronym_normal",acronym_normal,"Value_tumor",value_tumor,"Value_normal",value_normal,'cpg_id',cpg_id);
     makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal,cpg_id);
 }
 function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal,cpg_id){
