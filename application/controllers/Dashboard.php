@@ -15,10 +15,11 @@ class Dashboard extends CI_Controller {
             $page_data = array(
               'range' => $range,
             );
-
+            $this->load->view('dashboardView',$page_data);
+        }else {
+            $this->load->view('dashboardView');
         }
 
-        $this->load->view('dashboardView',$page_data);
     }
 
     public function get_position($cpg_id){
