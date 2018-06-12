@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller {
         $data_slider_ticks_labels = "[" . $start .$data['cpg_ids'] . $end . "]";
         $percentages = [];
         foreach ($positions as $pos){
-            $percentages[] = $pos/$length;
+            $percentages[] = ($pos-$start)/$length;
         }
         $ticks_positions = "[0,".implode(",",$percentages).",100]";
         $range = "<input id='select_cpg' type='range' data-slider-ticks='{$data_slider_ticks_labels}' data-slider-ticks-snap-bounds='30' data-slider-ticks-labels='{$data_slider_ticks_labels}' ticks_positions='{$ticks_positions}' onchange='javscript:get_cpg(this.value)' oninput='javscript:get_cpg(this.value)'>";
