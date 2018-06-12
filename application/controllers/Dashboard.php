@@ -48,10 +48,10 @@ class Dashboard extends CI_Controller {
             $percentages[] = ($pos-$start)/$length * 100;
         }
         $ticks_positions = "[0,".implode(",",$percentages).",100]";
-        $range = "<input class='range-field my-4 w-100' id='select_cpg' type='range' data-slider-ticks='{$data_slider_ticks_labels}' data-slider-ticks-snap-bounds='30' data-slider-ticks-labels='{$data_slider_ticks_labels}' ticks_positions='{$ticks_positions}' onchange='javscript:get_cpg(this.value)' oninput='javscript:get_cpg(this.value)'>";
+        $range = "<input class='range-field my-4 w-100' id='select_cpg' type='range' data-slider-ticks='{$data_slider_ticks}' data-slider-ticks-snap-bounds='30' data-slider-ticks-labels='{$data_slider_ticks_labels}' ticks_positions='{$ticks_positions}' onchange='javscript:get_cpg(this.value)' oninput='javscript:get_cpg(this.value)'>";
         echo "<script>";
         echo "$(#select_cpg).slider({
-            ticks: {$data_slider_ticks_labels},
+            ticks: {$data_slider_ticks},
             tick_labels: {$data_slider_ticks_labels},
             ticks_snap_bounds: 30
         
