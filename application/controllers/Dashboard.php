@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller {
             $buttons = $this->create_buttons($data);
             $page_data = array(
                 'buttons' => $buttons,
+                'script' => $data['script'],
             );
             $this->load->view('dashboardView',$page_data);
         }else {
@@ -71,7 +72,7 @@ class Dashboard extends CI_Controller {
         $cpg_ids = explode(",",$data['cpg_ids']);
         $buttons = "<div class='btn-group btn-group-sm w-80' role='group' >";
         foreach ($cpg_ids as $cpg_id) {
-            echo "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}'>{$cpg_id}</button>";
+            echo "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)'>{$cpg_id}</button>";
         }
         $buttons = "</div>";
     }
@@ -133,12 +134,14 @@ class Dashboard extends CI_Controller {
         $datafile = end($returned);
 //        echo "<a id='datafile' style='display: none'>{$datafile}</a>";
 //        echo "<a id='cpg_ids' style='display: none'>{$cpg_ids_string}</a>";
+        $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
         $final_result = array(
             'from' => $start,
             'to' => $end,
             'cpg_ids' => $cpg_ids_string,
+            'script' => $call_this_script,
         );
-        echo "<a id='mode' style='display: none;' value='gene'>gene</a>";
+
         return $final_result;
     }
 

@@ -162,6 +162,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php
 if (isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
     echo $script;
+}elseif (isset($_POST['gene']) or isset($_GET['gene'])){
+    echo $script;
 }
 ?>
 <!--<script src="distrochart.js" charset="utf-8"></script>

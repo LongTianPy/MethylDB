@@ -1,6 +1,5 @@
-
-function makeplot(){
-    var file = document.getElementById('datafile').value;
+function makeplot(cpg_id){
+    var file = "/MethylDB/Result/" + cpg_id + ".txt";
     Plotly.d3.csv(file,function(data){processData(data)});
 };
 function processData(allRows){
@@ -50,7 +49,5 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     }
     Plotly.react('myChart',data,layout);
 }
-
-makeplot();
 
 
