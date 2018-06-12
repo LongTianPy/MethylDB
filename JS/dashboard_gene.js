@@ -50,4 +50,8 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     Plotly.react('myChart',data,layout);
 }
 
-
+$(function () {
+    $(document).ready(function () {
+        $('.cpg_buttons').popover();
+    });
+});
