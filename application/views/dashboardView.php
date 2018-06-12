@@ -137,7 +137,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo $range;
                 echo "</div>";
             }elseif (isset($buttons)){
+                echo "<div id='buttons'>";
                 echo $buttons;
+                echo "</div>";
             }
             ?>
             <div class="my-4 w-100" id="myChart" width="900" height="600" style="min-height: 600px;"></div>
