@@ -1,8 +1,3 @@
-function get_cpg() {
-    var d = document.createElement('a');
-    d.setAttribute('id','datafile');
-    d.value = this.value;
-}
 
 function makeplot(){
     var file = document.getElementById('datafile').value;
@@ -55,4 +50,24 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     }
     Plotly.react('myChart',data,layout);
 }
-makeplot();
+
+
+
+$(document).ready(function () {
+    var mode = document.getElementById('mode').value;
+    if (mode == 'id') {
+        makeplot();
+    } else if (mode == 'gene') {
+        $('.cpg_buttons').click(function() {
+            var d = document.createElement('div');
+            d.id = 'datafile';
+            d.value = '/MethylDB/Result/' + $(this).val() + ".txt";
+            makeplot();
+        })
+    }
+
+
+
+
+})
+

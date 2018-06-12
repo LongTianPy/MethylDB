@@ -66,9 +66,9 @@ class Dashboard extends CI_Controller {
 
     public function create_buttons($data){
         $cpg_ids = explode(",",$data['cpg_ids']);
-        $buttons = "<div class='btn-group btn-group-sm w-100' role='group' >";
+        $buttons = "<div class='btn-group btn-group-sm w-80' role='group' >";
         foreach ($cpg_ids as $cpg_id) {
-            echo "<button type='button' class='btn btn-secondary' value='{$cpg_id}' onclick='javascript:get_cpg()'>{$cpg_id}</button>";
+            echo "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}'>{$cpg_id}</button>";
         }
         $buttons = "</div>";
     }
@@ -101,6 +101,7 @@ class Dashboard extends CI_Controller {
 //        <script type='text/javascript'>var datafile='{$datafile}';
 //        var cpg_id={$cpg_id};</script>
 //        ";
+        echo "<a id='mode' style='display: none;' value='id'></a>";
         echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
         echo "<a id='cpg_id' style='display: none' value='{$cpg_id}'>{$cpg_id}</a>";
     }
@@ -133,6 +134,7 @@ class Dashboard extends CI_Controller {
             'to' => $end,
             'cpg_ids' => $cpg_ids_string,
         );
+        echo "<a id='mode' style='display: none;' value='gene'></a>";
         return $final_result;
     }
 
