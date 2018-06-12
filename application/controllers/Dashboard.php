@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller {
     public function create_range_bar($data){
         $positions = [];
         $cpg_ids = explode(",",$data['cpg_ids']);
-        foreach ($data['cpg_ids'] as $cpg_id) {
+        foreach ($cpg_ids as $cpg_id) {
             $pos = $this->get_position($cpg_id);
             $positions[] = $pos;
         }
@@ -109,7 +109,7 @@ class Dashboard extends CI_Controller {
         $final_result = array(
             'from' => $start,
             'to' => $end,
-            'cpg_ids' => $cpg_ids,
+            'cpg_ids' => $cpg_ids_string,
         );
         return $final_result;
     }
