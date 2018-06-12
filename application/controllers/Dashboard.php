@@ -70,9 +70,9 @@ class Dashboard extends CI_Controller {
 
     public function create_buttons($data){
         $cpg_ids = explode(",",$data['cpg_ids']);
-        $buttons = "<div class='btn-group btn-group-sm w-80' role='group' >";
+        $buttons = "<div class='btn-group btn-group-sm w-100' role='group' >";
         foreach ($cpg_ids as $cpg_id) {
-            echo "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)'>{$cpg_id}</button>";
+            $buttons .= "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='font-size: small'>{$cpg_id}</button>";
         }
         $buttons = "</div>";
     }
