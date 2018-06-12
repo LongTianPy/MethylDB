@@ -4,7 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard extends CI_Controller {
     public function index(){
         if(isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
-            $this->search_by_id();
+            $script = $this->search_by_id();
+            $page_data = array(
+                'script' => $script,
+            );
             $this->load->view('dashboardView');
         }elseif (isset($_POST['chr_id']) and isset($_POST['from']) and isset($_POST['to']) and !empty($_POST['chr_id']) and !empty($_POST['from']) and !empty($_POST['to']) ){
             $this->search_by_region();
@@ -101,9 +104,10 @@ class Dashboard extends CI_Controller {
 //        <script type='text/javascript'>var datafile='{$datafile}';
 //        var cpg_id={$cpg_id};</script>
 //        ";
-        echo "<a id='mode' style='display: none;' value='id'>id</a>";
         echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
         echo "<a id='cpg_id' style='display: none' value='{$cpg_id}'>{$cpg_id}</a>";
+        $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
+        return $call_this_script;
     }
 
     public function search_by_gene(){

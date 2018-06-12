@@ -159,7 +159,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js" type="text/javascript"></script>
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
-<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>
+<?php
+if (isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
+    echo $script;
+}
+?>
 <!--<script src="distrochart.js" charset="utf-8"></script>
 <script src="/MethylDB/JS/chart.js" type="text/javascript"></script>
 <script>
