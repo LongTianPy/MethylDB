@@ -101,7 +101,7 @@ class Dashboard extends CI_Controller {
 //        <script type='text/javascript'>var datafile='{$datafile}';
 //        var cpg_id={$cpg_id};</script>
 //        ";
-        echo "<a id='mode' style='display: none;' value='id'></a>";
+        echo "<a id='mode' style='display: none;' value='id'>id</a>";
         echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
         echo "<a id='cpg_id' style='display: none' value='{$cpg_id}'>{$cpg_id}</a>";
     }
@@ -134,7 +134,7 @@ class Dashboard extends CI_Controller {
             'to' => $end,
             'cpg_ids' => $cpg_ids_string,
         );
-        echo "<a id='mode' style='display: none;' value='gene'></a>";
+        echo "<a id='mode' style='display: none;' value='gene'>gene</a>";
         return $final_result;
     }
 
