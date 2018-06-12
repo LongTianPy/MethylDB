@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
     public function index(){
-        if(isset($_POST['cpg_id']) and !empty($_POST['cpg_id'])){
+        if(isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
             $this->search_by_id();
             $this->load->view('dashboardView');
         }elseif (isset($_POST['chr_id']) and isset($_POST['from']) and isset($_POST['to']) and !empty($_POST['chr_id']) and !empty($_POST['from']) and !empty($_POST['to']) ){
@@ -79,7 +79,7 @@ class Dashboard extends CI_Controller {
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_data.py";
         $cpg_id = $this->input->post('cpg_id');
-//        $cpg_id = $this->input->get('cpg_id');
+        $cpg_id = $this->input->get('cpg_id');
         settype($cpg_id,'string');
         $cpg_id = "'".$cpg_id."'";
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
