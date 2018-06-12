@@ -1,7 +1,7 @@
-function get_cpg(range_val) {
+function get_cpg() {
     var d = document.createElement('a');
     d.setAttribute('id','datafile');
-    d.value = range_val;
+    d.value = this.value;
 }
 
 function makeplot(){
