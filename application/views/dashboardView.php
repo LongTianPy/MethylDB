@@ -130,19 +130,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <button class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
                 </div>
-                <?php
-                if (isset($range)) {
-                    echo "<div id='range_bar'>";
-                    echo $range;
-                    echo "</div>";
-                }elseif (isset($buttons)){
-                    echo "<div id='buttons'>";
-                    echo $buttons;
-                    echo "</div>";
-                }
-                ?>
             </div>
-
+            <?php
+            if (isset($range)) {
+                echo "<div id='range_bar' class='my-4 w-100'>";
+                echo $range;
+                echo "</div>";
+            }elseif (isset($buttons)){
+                echo $buttons;
+            }
+            ?>
             <div class="my-4 w-100" id="myChart" width="900" height="600" style="min-height: 600px;"></div>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">
