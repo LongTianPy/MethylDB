@@ -152,7 +152,6 @@ class Dashboard extends CI_Controller {
 //        exec("echo {$cmd} > /home/long-lamp-username/MethylDB/result/tabix_cmd.txt");
             exec($cmd);
             $row_nums = count(file($output));
-            echo $row_nums;
             settype($row_nums, 'integer');
             if ($row_nums > 1){
                 $cmd = "python {$python_scipt} {$output}";
@@ -193,7 +192,6 @@ class Dashboard extends CI_Controller {
             $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
             exec($cmd);
             $row_nums = count(file($output));
-            echo $row_nums;
             settype($row_nums, 'integer');
             if ($row_nums > 1){
                 $cmd = "python {$python_scipt} {$output}";
@@ -241,7 +239,6 @@ class Dashboard extends CI_Controller {
         $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
         exec($cmd);
         $row_nums = count(file($output));
-        echo $row_nums;
         settype($row_nums, 'integer');
         if ($row_nums > 1){
             $cmd = "python {$python_scipt} {$output}";
