@@ -140,7 +140,7 @@ class Dashboard extends CI_Controller {
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
 //        exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql)->result();
-        print_r($result);
+//        print_r($result);
         if (count($result)>0){
             $result = $result[0];
             $chr = $result->CHR;
@@ -184,8 +184,9 @@ class Dashboard extends CI_Controller {
         settype($gene,'string');
         strtoupper($gene);
         $sql = "select * from Gene where gene='{$gene}'";
-        $result = $this->db->query($sql);
-        if ($result->num_rows>0){
+        $result = $this->db->query($sql)->result();
+        if (count($result)>0){
+            $result = $result[0];
             $chr = $result->CHR;
             $start = $result->start;
             $end = $result->end;
