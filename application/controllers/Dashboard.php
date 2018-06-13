@@ -3,9 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
     public function index(){
+        $place_holder = "";
+//            $place_holder .= "<figure class='figure-img img-fluid rounded'>";
+        $place_holder .= "<img src='/MethylDB/IMG/placeholding_img.png'>";
+//            $place_holder .= "</figure>";
         if(isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
             $script = $this->search_by_id();
             $page_data = array(
+                'place_holder' => $place_holder,
                 'script' => $script,
             );
             $this->load->view('dashboardView',$page_data);
@@ -13,6 +18,7 @@ class Dashboard extends CI_Controller {
             $data = $this->search_by_region();
             $buttons = $this->create_buttons($data);
             $page_data = array(
+                'place_holder' => $place_holder,
                 'buttons' => $buttons,
                 'script' => $data['script'],
             );
@@ -25,15 +31,13 @@ class Dashboard extends CI_Controller {
 //            );
             $buttons = $this->create_buttons($data);
             $page_data = array(
+                'place_holder' => $place_holder,
                 'buttons' => $buttons,
                 'script' => $data['script'],
             );
             $this->load->view('dashboardView',$page_data);
         }else {
-            $place_holder = "";
-//            $place_holder .= "<figure class='figure-img img-fluid rounded'>";
-            $place_holder .= "<img src='/MethylDB/IMG/placeholding_img.png'>";
-//            $place_holder .= "</figure>";
+
             $page_data = array(
                 'place_holder' => $place_holder,
             );
