@@ -150,9 +150,7 @@ class Dashboard extends CI_Controller {
             $cmd = "tabix {$input} {$chr}:{$from}-{$to} -h > {$output}";
 //        exec("echo {$cmd} > /home/long-lamp-username/MethylDB/result/tabix_cmd.txt");
             exec($cmd);
-            $row_nums = shell_exec("wc -l {$output} 2>&1");
-            echo $row_nums;
-            $row_nums = substr($row_nums,0);
+            $row_nums = count(file($output));
             echo $row_nums;
             settype($row_nums, 'integer');
             if ($row_nums > 1){
@@ -192,9 +190,7 @@ class Dashboard extends CI_Controller {
             $end = $result->end;
             $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
             exec($cmd);
-            $row_nums = shell_exec("wc -l {$output} 2>&1");
-            echo $row_nums;
-            $row_nums = substr($row_nums,0);
+            $row_nums = count(file($output));
             echo $row_nums;
             settype($row_nums, 'integer');
             if ($row_nums > 1){
@@ -242,9 +238,7 @@ class Dashboard extends CI_Controller {
         }
         $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
         exec($cmd);
-        $row_nums = shell_exec("wc -l {$output} 2>&1");
-        echo $row_nums;
-        $row_nums = substr($row_nums,0);
+        $row_nums = count(file($output));
         echo $row_nums;
         settype($row_nums, 'integer');
         if ($row_nums > 1){
