@@ -48,6 +48,7 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
         },
         boxmode: 'group'
     }
+    document.getElementById("placeholder_img").style.display = "none";
     Plotly.react('myChart',data,layout);
 }
 

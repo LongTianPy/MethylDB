@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
     public function index(){
         $place_holder = "";
 //            $place_holder .= "<figure class='figure-img img-fluid rounded'>";
-        $place_holder .= "<img src='/MethylDB/IMG/placeholding_img.png'>";
+        $place_holder .= "<img src='/MethylDB/IMG/placeholding_img.png' id='placeholder_img'>";
 //            $place_holder .= "</figure>";
         if(isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
             $script = $this->search_by_id();
