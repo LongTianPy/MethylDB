@@ -142,7 +142,7 @@ class Dashboard extends CI_Controller {
         $result = $this->db->query($sql)->result();
         print_r($result);
         if (count($result)>0){
-            $result = $result->row(0);
+            $result = $result[0];
             $chr = $result->CHR;
             $position = $result->MAPINFO;
 //        settype($position,"integer");
