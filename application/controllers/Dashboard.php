@@ -8,11 +8,19 @@ class Dashboard extends CI_Controller {
         $place_holder .= "<img src='/MethylDB/IMG/placeholding_img.png' id='placeholder_img'>";
 //            $place_holder .= "</figure>";
         if(isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
-            $script = $this->search_by_id();
-            $page_data = array(
-                'place_holder' => $place_holder,
-                'script' => $script,
-            );
+            $data = $this->search_by_id();
+            if (isset($data['script'])){
+                $page_data = array(
+                    'place_holder' => $place_holder,
+                    'script' => $data['script'],
+                );
+            }elseif (isset($data['no_result'])){
+                $page_data = array(
+                    'place_holder' => $place_holder,
+                    'msg' => "No record found, please modify your search."
+                );
+            }
+
             $this->load->view('dashboardView',$page_data);
         }elseif (isset($_GET['from']) and isset($_GET['to']) and !empty($_GET['from']) and !empty($_GET['to']) ){
             $data = $this->search_by_region();
@@ -122,27 +130,35 @@ class Dashboard extends CI_Controller {
         $cpg_id = "'".$cpg_id."'";
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
 //        exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
-        $result = $this->db->query($sql)->row(0);
-        $chr = $result->CHR;
-        $position = $result->MAPINFO;
+        $result = $this->db->query($sql);
+        if ($result->num_rows>0){
+            $result = $result->row(0);
+            $chr = $result->CHR;
+            $position = $result->MAPINFO;
 //        settype($position,"integer");
-        $from = $position-1;
-        $to = $position+1;
-        $cmd = "tabix {$input} {$chr}:{$from}-{$to} -h > {$output}";
+            $from = $position-1;
+            $to = $position+1;
+            $cmd = "tabix {$input} {$chr}:{$from}-{$to} -h > {$output}";
 //        exec("echo {$cmd} > /home/long-lamp-username/MethylDB/result/tabix_cmd.txt");
-        exec($cmd);
-        $cmd = "python {$python_scipt} {$output}";
-        $datafile = shell_exec($cmd);
-        $this->session->set_userdata($datafile);
-        $this->session->set_userdata($cpg_id);
-//        echo "
-//        <script type='text/javascript'>var datafile='{$datafile}';
-//        var cpg_id={$cpg_id};</script>
-//        ";
-        echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
-        echo "<a id='cpg_id' style='display: none' value='{$return_cpg}'>{$return_cpg}</a>";
-        $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
-        return $call_this_script;
+            exec($cmd);
+            $row_nums = shell_exec("wc -l {$output}");
+            $row_nums = explode(" ",$row_nums)[0];
+            if ($row_nums > 0){
+                $cmd = "python {$python_scipt} {$output}";
+                $datafile = shell_exec($cmd);
+                $this->session->set_userdata($datafile);
+                $this->session->set_userdata($cpg_id);
+                echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
+                echo "<a id='cpg_id' style='display: none' value='{$return_cpg}'>{$return_cpg}</a>";
+                $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
+                $data = array('script'=>$call_this_script,);
+            }else{
+                $data = array('no_result' => 0,);
+            }
+        } else{
+            $data = array('no_result' => 0,);
+        }
+        return $data;
     }
 
     public function search_by_gene(){
@@ -157,29 +173,42 @@ class Dashboard extends CI_Controller {
         settype($gene,'string');
         strtoupper($gene);
         $sql = "select * from Gene where gene='{$gene}'";
-        $result = $this->db->query($sql)->row(0);
-        $chr = $result->CHR;
-        $start = $result->start;
-        $end = $result->end;
-        $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
-        exec($cmd);
-        $cmd = "python {$python_scipt} {$output}";
-        $returned = shell_exec($cmd);
-        $returned = explode(",",$returned);
-        $cpg_ids = array_slice($returned,0,-1);
-        $cpg_ids_string = implode(",",$cpg_ids);
-        $datafile = end($returned);
+        $result = $this->db->query($sql);
+        if ($result->num_rows>0){
+            $chr = $result->CHR;
+            $start = $result->start;
+            $end = $result->end;
+            $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
+            exec($cmd);
+            $row_nums = shell_exec("wc -l {$output}");
+            $row_nums = explode(" ",$row_nums)[0];
+            if ($row_nums > 0){
+                $cmd = "python {$python_scipt} {$output}";
+                $returned = shell_exec($cmd);
+                $returned = explode(",",$returned);
+                $cpg_ids = array_slice($returned,0,-1);
+                $cpg_ids_string = implode(",",$cpg_ids);
+                $datafile = end($returned);
 //        echo "<a id='datafile' style='display: none'>{$datafile}</a>";
 //        echo "<a id='cpg_ids' style='display: none'>{$cpg_ids_string}</a>";
-        $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
-        $final_result = array(
-            'gene' => $gene,
-            'from' => $start,
-            'to' => $end,
-            'cpg_ids' => $cpg_ids_string,
-            'script' => $call_this_script,
-        );
-
+                $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
+                $final_result = array(
+                    'gene' => $gene,
+                    'from' => $start,
+                    'to' => $end,
+                    'cpg_ids' => $cpg_ids_string,
+                    'script' => $call_this_script,
+                );
+            }else{
+                $final_result = array(
+                    'no_result' => 0,
+                );
+            }
+        } else {
+            $final_result = array(
+                'no_result' => 0,
+            );
+        }
         return $final_result;
     }
 
@@ -187,25 +216,40 @@ class Dashboard extends CI_Controller {
         $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_multi.py";
-        $chr = $this->input->get('chr_id');
-        $start = $this->input->get('from');
-        $end = $this->input->get('to');
+        if (isset($_GET['chr_id'])){
+            $chr = $this->input->get('chr_id');
+            $start = $this->input->get('from');
+            $end = $this->input->get('to');
+        }elseif (isset($_POST['chr_id'])){
+            $chr = $this->input->post('chr_id');
+            $start = $this->input->post('from');
+            $end = $this->input->post('to');
+        }
         $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
         exec($cmd);
-        $cmd = "python {$python_scipt} {$output}";
-        $returned = shell_exec($cmd);
-        $returned = explode(",",$returned);
-        $cpg_ids = array_slice($returned,0,-1);
-        $cpg_ids_string = implode(",",$cpg_ids);
-        $datafile = end($returned);
-        $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
-        $final_result = array(
-            'chr' => $chr,
-            'from' => $start,
-            'to' => $end,
-            'cpg_ids' => $cpg_ids_string,
-            'script' => $call_this_script,
+        $row_nums = shell_exec("wc -l {$output}");
+        $row_nums = explode(" ",$row_nums)[0];
+        if ($row_nums > 0){
+            $cmd = "python {$python_scipt} {$output}";
+            $returned = shell_exec($cmd);
+            $returned = explode(",",$returned);
+            $cpg_ids = array_slice($returned,0,-1);
+            $cpg_ids_string = implode(",",$cpg_ids);
+            $datafile = end($returned);
+            $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
+            $final_result = array(
+                'chr' => $chr,
+                'from' => $start,
+                'to' => $end,
+                'cpg_ids' => $cpg_ids_string,
+                'script' => $call_this_script,
             );
+            return $final_result;
+        }else{
+            $final_result = array(
+                'no_result' => 0,
+            );
+        }
         return $final_result;
     }
 }
