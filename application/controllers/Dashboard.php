@@ -141,7 +141,7 @@ class Dashboard extends CI_Controller {
 //        exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql)->result();
         print_r($result);
-        if ($result->num_rows>0){
+        if (count($result)>0){
             $result = $result->row(0);
             $chr = $result->CHR;
             $position = $result->MAPINFO;
