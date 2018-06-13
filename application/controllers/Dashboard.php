@@ -75,7 +75,9 @@ class Dashboard extends CI_Controller {
 
     public function create_buttons($data){
         $cpg_ids = explode(",",$data['cpg_ids']);
-        $buttons = "<div class='btn-group btn-group-sm w-100' role='group' >";
+        $buttons = "";
+        $buttons .= "<div>";
+        $buttons .= "<div class='btn-group btn-group-sm w-100' role='group' >";
         if (isset($data['gene'])){
             $gene = $data['gene'];
             $buttons .= "<label>{$gene}&nbsp&nbsp&nbsp&nbsp   </label>";
@@ -89,6 +91,7 @@ class Dashboard extends CI_Controller {
             $buttons .= "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 2em;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'>      </button>";
         }
         $buttons .= "</div>";
+        $buttons .= "<h4>Move mouse over the above button(s) to see each CpG island, click to see distribution of methylation levels in each cancer type.</h4>";
         return $buttons;
     }
 
