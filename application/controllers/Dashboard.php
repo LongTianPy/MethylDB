@@ -91,7 +91,7 @@ class Dashboard extends CI_Controller {
             $buttons .= "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 2em;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'>      </button>";
         }
         $buttons .= "</div>";
-        $buttons .= "<h4>Move mouse over the above button(s) to see each CpG island, click to see distribution of methylation levels in each cancer type.</h4>";
+        $buttons .= "<label style='color:lightgrey'>Move mouse over the above button(s) to see each CpG island, click to see distribution of methylation levels in each cancer type.</label>";
         return $buttons;
     }
 
