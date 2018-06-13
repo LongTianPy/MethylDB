@@ -20,29 +20,38 @@ class Dashboard extends CI_Controller {
                     'msg' => "No record found, please modify your search."
                 );
             }
-
             $this->load->view('dashboardView',$page_data);
         }elseif (isset($_GET['from']) and isset($_GET['to']) and !empty($_GET['from']) and !empty($_GET['to']) ){
             $data = $this->search_by_region();
-            $buttons = $this->create_buttons($data);
-            $page_data = array(
-                'place_holder' => $place_holder,
-                'buttons' => $buttons,
-                'script' => $data['script'],
-            );
+            if (isset($data['script'])){
+                $buttons = $this->create_buttons($data);
+                $page_data = array(
+                    'place_holder' => $place_holder,
+                    'buttons' => $buttons,
+                    'script' => $data['script'],
+                );
+            }else{
+                $page_data = array(
+                    'place_holder' => $place_holder,
+                    'msg' => "No record found, please modify your search."
+                );
+            }
             $this->load->view('dashboardView',$page_data);
         }elseif (isset($_POST['gene']) or isset($_GET['gene'])){
             $data = $this->search_by_gene();
-//            $range = $this->create_range_bar($data);
-//            $page_data = array(
-//              'range' => $range,
-//            );
-            $buttons = $this->create_buttons($data);
-            $page_data = array(
-                'place_holder' => $place_holder,
-                'buttons' => $buttons,
-                'script' => $data['script'],
-            );
+            if (isset($data['script'])){
+                $buttons = $this->create_buttons($data);
+                $page_data = array(
+                    'place_holder' => $place_holder,
+                    'buttons' => $buttons,
+                    'script' => $data['script'],
+                );
+            }else{
+                $page_data = array(
+                    'place_holder' => $place_holder,
+                    'msg' => "No record found, please modify your search."
+                );
+            }
             $this->load->view('dashboardView',$page_data);
         }else {
 

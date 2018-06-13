@@ -132,15 +132,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <?php
-            if (isset($range)) {
-                echo "<div id='range_bar' class='my-4 w-100'>";
-                echo $range;
-                echo "</div>";
+            if (isset($msg)) {
+                echo "<h5>";
+                echo $msg;
+                echo "</h5>";
             }elseif (isset($buttons)){
                 echo $buttons;
             }
             ?>
-
             <div class="my-4 w-100 figure-img img-fluid rounded" id="myChart" width="900" height="600" style="min-height: 600px;">
                 <?php
                 if (isset($place_holder)) {
