@@ -75,9 +75,16 @@ class Dashboard extends CI_Controller {
 
     public function create_buttons($data){
         $cpg_ids = explode(",",$data['cpg_ids']);
-        $gene = $data['gene'];
         $buttons = "<div class='btn-group btn-group-sm w-100' role='group' >";
-        $buttons .= "<label>{$gene}&nbsp&nbsp&nbsp&nbsp   </label>";
+        if (isset($data['gene'])){
+            $gene = $data['gene'];
+            $buttons .= "<label>{$gene}&nbsp&nbsp&nbsp&nbsp   </label>";
+        }else{
+            $chr = $data['chr'];
+            $start = $data['from'];
+            $end = $data['to'];
+            $buttons .= "<label>Chr{$chr}: {$start} - {$end}&nbsp&nbsp&nbsp&nbsp    </label>";
+        }
         foreach ($cpg_ids as $cpg_id) {
             $buttons .= "<button type='button' class='btn btn-secondary cpg_buttons' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 2em;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'>      </button>";
         }
@@ -179,7 +186,7 @@ class Dashboard extends CI_Controller {
         $datafile = end($returned);
         $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
         $final_result = array(
-            'gene' => $gene,
+            'chr' => $chr,
             'from' => $start,
             'to' => $end,
             'cpg_ids' => $cpg_ids_string,
