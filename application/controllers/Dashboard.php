@@ -140,6 +140,7 @@ class Dashboard extends CI_Controller {
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
 //        exec("echo {$sql} > /home/long-lamp-username/MethylDB/result/search_by_id_sql.txt");
         $result = $this->db->query($sql);
+        print_r($result);
         if ($result->num_rows>0){
             $result = $result->row(0);
             $chr = $result->CHR;
