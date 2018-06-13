@@ -140,8 +140,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo $buttons;
             }
             ?>
-            <
-            <div class="my-4 w-100 img-fluid rounded" id="myChart" width="900" height="600" style="min-height: 600px;color: grey;">
+
+            <div class="my-4 w-100 img-fluid rounded" id="myChart" width="900" height="600" style="min-height: 600px;">
+                <figure class="figure-img img-fluid rounded">
+                    <img src="/MethylDB/IMG/placeholding_img.png">
+                </figure>
             </div>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">
