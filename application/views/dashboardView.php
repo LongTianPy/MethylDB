@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
                                 <div class="card-body">
-                                    <form method="get" id="form-search_by_region" action="Dashboard">
+                                    <form method="post" id="form-search_by_region" action="Dashboard">
                                         <div class="form-group">
                                             <label for="chr_id">Chromosome</label>
                                             <select class="form-control" id="chr_id" name="chr_id">
@@ -141,10 +141,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             ?>
 
-            <div class="my-4 w-100 img-fluid rounded" id="myChart" width="900" height="600" style="min-height: 600px;">
-                <figure class="figure-img img-fluid rounded">
-                    <img src="/MethylDB/IMG/placeholding_img.png">
-                </figure>
+            <div class="my-4 w-100 figure-img img-fluid rounded" id="myChart" width="900" height="600" style="min-height: 600px;">
+                <?php
+                if (isset($place_holder)) {
+                    echo $place_holder;
+                }
+                ?>
             </div>
             <h2>Methylation beta values</h2>
             <table class="table table-striped table-sm">

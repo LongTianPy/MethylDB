@@ -30,7 +30,14 @@ class Dashboard extends CI_Controller {
             );
             $this->load->view('dashboardView',$page_data);
         }else {
-            $this->load->view('dashboardView');
+            $place_holder = "";
+//            $place_holder .= "<figure class='figure-img img-fluid rounded'>";
+            $place_holder .= "<img src='/MethylDB/IMG/placeholding_img.png'>";
+//            $place_holder .= "</figure>";
+            $page_data = array(
+                'place_holder' => $place_holder,
+            );
+            $this->load->view('dashboardView',$page_data);
         }
 
     }
@@ -176,9 +183,9 @@ class Dashboard extends CI_Controller {
         $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
         $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
         $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_multi.py";
-        $chr = $this->input->get('chr_id');
-        $start = $this->input->get('from');
-        $end = $this->input->get('to');
+        $chr = $this->input->post('chr_id');
+        $start = $this->input->post('from');
+        $end = $this->input->post('to');
         $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
         exec($cmd);
         $cmd = "python {$python_scipt} {$output}";
