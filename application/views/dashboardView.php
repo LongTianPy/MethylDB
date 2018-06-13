@@ -91,10 +91,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
                                 <div class="card-body">
-                                    <form method="post" id="form-search_by_region" action="Dashboard">
+                                    <form method="get" id="form-search_by_region" action="Dashboard">
                                         <div class="form-group">
                                             <label for="chr_id">Chromosome</label>
-                                            <select class="form-control" id="chr_id">
+                                            <select class="form-control" id="chr_id" name="chr_id">
                                                 <?php
                                                 for ($i=1;$i<=22;$i++) {
                                                     echo "<option>{$i}</option>";
@@ -161,6 +161,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if (isset($_POST['cpg_id']) or isset($_GET['cpg_id'])){
     echo $script;
 }elseif (isset($_POST['gene']) or isset($_GET['gene'])){
+    echo $script;
+}elseif (isset($_POST['from']) or isset($_GET['from'])){
     echo $script;
 }
 ?>

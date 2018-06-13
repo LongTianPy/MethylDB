@@ -9,9 +9,14 @@ class Dashboard extends CI_Controller {
                 'script' => $script,
             );
             $this->load->view('dashboardView',$page_data);
-        }elseif (isset($_POST['chr_id']) and isset($_POST['from']) and isset($_POST['to']) and !empty($_POST['chr_id']) and !empty($_POST['from']) and !empty($_POST['to']) ){
-            $this->search_by_region();
-            $this->load->view('dashboardView');
+        }elseif (isset($_GET['from']) and isset($_GET['to']) and !empty($_GET['from']) and !empty($_GET['to']) ){
+            $data = $this->search_by_region();
+            $buttons = $this->create_buttons($data);
+            $page_data = array(
+                'buttons' => $buttons,
+                'script' => $data['script'],
+            );
+            $this->load->view('dashboardView',$page_data);
         }elseif (isset($_POST['gene']) or isset($_GET['gene'])){
             $data = $this->search_by_gene();
 //            $range = $this->create_range_bar($data);
@@ -157,5 +162,30 @@ class Dashboard extends CI_Controller {
         return $final_result;
     }
 
+    public function search_by_region(){
+        $input = "/home/long-lamp-username/MethylDB/mData_output.txt.gz";
+        $output = "/home/long-lamp-username/MethylDB/result/" . uniqid() . ".txt";
+        $python_scipt = "/home/long-lamp-username/Mayo_toolbox/prepare_boxplot_multi.py";
+        $chr = $this->input->get('chr_id');
+        $start = $this->input->get('from');
+        $end = $this->input->get('to');
+        $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
+        exec($cmd);
+        $cmd = "python {$python_scipt} {$output}";
+        $returned = shell_exec($cmd);
+        $returned = explode(",",$returned);
+        $cpg_ids = array_slice($returned,0,-1);
+        $cpg_ids_string = implode(",",$cpg_ids);
+        $datafile = end($returned);
+        $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
+        $final_result = array(
+            'gene' => $gene,
+            'from' => $start,
+            'to' => $end,
+            'cpg_ids' => $cpg_ids_string,
+            'script' => $call_this_script,
+            );
+        return $final_result;
+    }
 }
 ?>
