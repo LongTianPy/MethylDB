@@ -142,7 +142,7 @@ class Dashboard extends CI_Controller {
             $distance_to_previous = $locus - $previous;
             $relative_length = $distance_to_previous / $range * 800;
             $div .= "<div class='d-inline-block h-100' style='width: {$relative_length}px;'>";
-            $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px  #34495e;'>";
+            $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px solid #34495e;'>";
             $div .= "<a onclick='javascript:makeplot(this.value)'>  </a>";
             $div .= "</div>";
             $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
