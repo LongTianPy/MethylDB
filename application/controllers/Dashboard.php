@@ -145,6 +145,7 @@ class Dashboard extends CI_Controller {
             $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px solid #34495e;'>";
             $div .= "<a onclick='javascript:makeplot(this.value)'>  </a>";
             $div .= "</div>";
+            $div .= "</div>";
             $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
             $div .= "<thead><tr><th scope='col'>Info</th><th scope='col'>Value</th></tr></thead>";
             $div .= "<tbody>";
