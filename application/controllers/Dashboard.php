@@ -131,7 +131,7 @@ class Dashboard extends CI_Controller {
         $from = $data['from'];
         $to = $data['to'];
         $range = $to-$from;
-        $cpg_ids = $data['cpg_ids'];
+        $cpg_ids = explode(",",$data['cpg_ids']);
         foreach ($cpg_ids as $cpg_id) {
             $sql = "select * from Probeset where Probeset_ID='{$cpg_id}'";
             $result = $this->db->query($sql)->row(0);
