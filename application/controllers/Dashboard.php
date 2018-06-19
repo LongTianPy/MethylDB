@@ -134,6 +134,7 @@ class Dashboard extends CI_Controller {
         $cpg_ids = explode(",",$data['cpg_ids']);
         $previous = $from;
         for ($i=0;$i<count($cpg_ids);$i++){
+            $cpg_id = $cpg_ids[$i];
             $sql = "select * from Probeset where Probeset_ID='{$cpg_id}'";
             $result = $this->db->query($sql)->row(0);
             $chr = $result->CHR;
