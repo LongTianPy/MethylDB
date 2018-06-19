@@ -143,7 +143,7 @@ class Dashboard extends CI_Controller {
             $relative_length = $distance_to_previous / $range * 800;
             $div .= "<div class='d-inline-block h-100' style='width: {$relative_length}px;'>";
             $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px solid #34495e;' id='{$cpg_id}'>";
-            $div .= "<a onclick='javascript:makeplot(this.value)'>  </a>";
+            $div .= "<a onclick='javascript:makeplot(this.value)' value='{$cpg_id}'>  </a>";
             $div .= "</div>";
             $div .= "</div>";
             $div .= "<div style='display:none;' id='detail_{$cpg_id}'>";
