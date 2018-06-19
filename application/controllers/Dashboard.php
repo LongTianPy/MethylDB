@@ -139,7 +139,7 @@ class Dashboard extends CI_Controller {
             $locus = $result->MAPINFO;
             $distance_to_start = $locus-$from;
             $relative_distance = $distance_to_start/$range * 800;
-            $div .= "<div class='d-inline h-100 popdetail' style='padding-left: {$relative_distance}px;'>";
+            $div .= "<div class='d-inline-block h-100 popdetail' style='width: $relative_distance'>";
             $div .= "<a onclick='javascript:makeplot(this.value)' >";
             $div .= "<div style='z-index: 10;border-left: 2px #34495e;'>";
             $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
@@ -152,11 +152,38 @@ class Dashboard extends CI_Controller {
             $div .= "</a>";
             $div .= "</div>";
         }
+        for ($i=0;$i<count($cpg_ids);$i++){
+            $cpg_id = $cpg_ids[$i];
+            if ($i==0){
+                $previous = $from;
+            }else{
+                $previous = $cpg_ids[$i-1];
+            }
+            $sql = "select * from Probeset where Probeset_ID='{$cpg_id}'";
+            $result = $this->db->query($sql)->row(0);
+            $chr = $result->CHR;
+            $locus = $result->MAPINFO;
+            $distance_to_previous = $locus - $previous;
+            $relative_length = $distance_to_previous / $range * 800;
+            $div .= "<div class='d-inline-block h-100' style='width: {$relative_length}px;'>";
+            $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px  #34495e;'>";
+            $div .= "<a onclick='javascript:makeplot(this.value)'>  </a>";
+            $div .= "</div>";
+            $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
+            $div .= "<thead><tr><th scope='col'>Info</th><th scope='col'>Value</th></tr></thead>";
+            $div .= "<tbody>";
+            $div .= "<tr><th scope='col'>Probe ID</th><td>{$cpg_id}</td></tr>";
+            $div .= "<tr><th scope='col'>Chromosome</th><td>{$chr}</td></tr>";
+            $div .= "<tr><th scope='col'>Locus</th><td>{$locus}</td></tr>";
+            $div .= "</tbody>";
+
+        }
+
         return $div;
     }
 
     public function draw_div($data){
-        $div = "<div style='height: 100px;'>";
+        $div = "<div style='height: 100px;width: 800px;'>";
 //        $div .= $table;
         $div .= $this->mark_cpg($data);
         $div .= "</div>";
