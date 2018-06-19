@@ -165,7 +165,7 @@ class Dashboard extends CI_Controller {
             $div .= $this->align_elements($transcript);
         }
         foreach ($cpg_ids as $cpg_id) {
-            $div .= "<button type='button' class='btn btn-primary cpg_buttons h-100 d-inline-block' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 5px;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'> </button>";
+            $div .= "<a type='button' class='btn btn-primary cpg_buttons h-100 d-inline-block' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 5px;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'> </a>";
         }
         $div .= "</div>";
         return $div;
