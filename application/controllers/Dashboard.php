@@ -142,17 +142,19 @@ class Dashboard extends CI_Controller {
             $distance_to_previous = $locus - $previous;
             $relative_length = $distance_to_previous / $range * 800;
             $div .= "<div class='d-inline-block h-100' style='width: {$relative_length}px;'>";
-            $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px solid #34495e;'>";
+            $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px solid #34495e;' id='{$cpg_id}'>";
             $div .= "<a onclick='javascript:makeplot(this.value)'>  </a>";
             $div .= "</div>";
             $div .= "</div>";
-            $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
+            $div .= "<div style='display:none;' id='detail_{$cpg_id}'>";
+            $div .= "<table class='table table-sm'>";
             $div .= "<thead><tr><th scope='col'>Info</th><th scope='col'>Value</th></tr></thead>";
             $div .= "<tbody>";
             $div .= "<tr><th scope='col'>Probe ID</th><td>{$cpg_id}</td></tr>";
             $div .= "<tr><th scope='col'>Chromosome</th><td>{$chr}</td></tr>";
             $div .= "<tr><th scope='col'>Locus</th><td>{$locus}</td></tr>";
             $div .= "</tbody>";
+            $div .= "</div>";
             $previous = $locus;
         }
 

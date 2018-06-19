@@ -57,7 +57,7 @@ $(function () {
         popoverDetail = {
             content: function () {
                 var detail_id = this.id;
-                return $('table#detail_' + detail_id).html();
+                return $('div#detail_' + detail_id).html();
             },
             title: 'Quick look of this CpG island',
             trigger: 'hover',
