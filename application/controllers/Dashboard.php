@@ -140,7 +140,7 @@ class Dashboard extends CI_Controller {
             $chr = $result->CHR;
             $locus = $result->MAPINFO;
             $distance_to_previous = $locus - $previous;
-            $relative_length = $distance_to_previous / $range * 800;
+            $relative_length = $distance_to_previous / $range * 1000;
             $div .= "<div class='d-inline-block h-100' style='width: {$relative_length}px;'>";
             $div .= "<div class='mr-0 h-100 popdetail' style='border-right: 2px solid #34495e;' id='{$cpg_id}'>";
             $div .= "<a onclick='javascript:makeplot(this.value)' value='{$cpg_id}'>  </a>";
@@ -154,15 +154,15 @@ class Dashboard extends CI_Controller {
             $div .= "<tr><th scope='col'>Chromosome</th><td>{$chr}</td></tr>";
             $div .= "<tr><th scope='col'>Locus</th><td>{$locus}</td></tr>";
             $div .= "</tbody>";
+            $div .= "</table>";
             $div .= "</div>";
             $previous = $locus;
         }
-
         return $div;
     }
 
     public function draw_div($data){
-        $div = "<div style='height: 100px;width: 800px;'>";
+        $div = "<div style='height: 100px;width: 1000px;'>";
 //        $div .= $table;
         $div .= $this->mark_cpg($data);
         $div .= "</div>";
