@@ -132,26 +132,6 @@ class Dashboard extends CI_Controller {
         $to = $data['to'];
         $range = $to-$from;
         $cpg_ids = explode(",",$data['cpg_ids']);
-        foreach ($cpg_ids as $cpg_id) {
-            $sql = "select * from Probeset where Probeset_ID='{$cpg_id}'";
-            $result = $this->db->query($sql)->row(0);
-            $chr = $result->CHR;
-            $locus = $result->MAPINFO;
-            $distance_to_start = $locus-$from;
-            $relative_distance = $distance_to_start/$range * 800;
-            $div .= "<div class='d-inline-block h-100 popdetail' style='width: $relative_distance'>";
-            $div .= "<a onclick='javascript:makeplot(this.value)' >";
-            $div .= "<div style='z-index: 10;border-left: 2px #34495e;'>";
-            $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
-            $div .= "<thead><tr><th scope='col'>Info</th><th scope='col'>Value</th></tr></thead>";
-            $div .= "<tbody>";
-            $div .= "<tr><th scope='col'>Probe ID</th><td>{$cpg_id}</td></tr>";
-            $div .= "<tr><th scope='col'>Chromosome</th><td>{$chr}</td></tr>";
-            $div .= "<tr><th scope='col'>Locus</th><td>{$locus}</td></tr>";
-            $div .= "</tbody>";
-            $div .= "</a>";
-            $div .= "</div>";
-        }
         for ($i=0;$i<count($cpg_ids);$i++){
             $cpg_id = $cpg_ids[$i];
             if ($i==0){
