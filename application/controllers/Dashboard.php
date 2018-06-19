@@ -40,8 +40,8 @@ class Dashboard extends CI_Controller {
         }elseif (isset($_POST['gene']) or isset($_GET['gene'])){
             $data = $this->search_by_gene();
             if (isset($data['script'])){
-//                $buttons = $this->create_buttons($data);
-                $buttons = $this->create_genome_view($data);
+                $buttons = $this->create_buttons($data);
+//                $buttons = $this->create_genome_view($data);
                 $page_data = array(
                     'place_holder' => $place_holder,
                     'buttons' => $buttons,
@@ -124,52 +124,52 @@ class Dashboard extends CI_Controller {
         return $buttons;
     }
 
-    public function align_elements($transcript) {
-        $sql = "select * from hg19 where transcript_ID={$transcript}";
-        $result = $this->db->query($sql)->row(0);
-        $txStart = $result->txStart;
-        $txEnd = $result->txEnd;
-        $cdsStart = $result->cdsStart;
-        $cdsEnd = $result->cdsEnd;
-        $exonCount = $result->exonCount;
-        $exonStarts = explode(",",$result->exonStarts);
-        $exonEnds = explode(",",$result->exonEnds);
-        $strand = $result->strand;
-        $length = $txEnd - $txStart;
-        $beforeCDS = $cdsStart - $txStart;
-        $beforeCDS_percentage = $beforeCDS/$length;
-        $relative_beforeCDS_length = $beforeCDS_percentage*800;
-        $relative_CDS_length = ($cdsEnd-$cdsStart)/$length*800;
-        $div = "<div class='d-flex flex-row align-items-center' style='background-color: #c5eff7;height: 20px;width: 800px;'>";
-        $div .= "<div class='d-inline-block' style='background-color: #f5d76e;z-index: 1;width: {$relative_beforeCDS_length};height:5px;'></div>";
-        $div .= "<div class='d-inline-block' style='background-color: #E67E22;z-index: 1;width: {$relative_CDS_length};height:5px;'></div>";
-        for ($i=0;$i<$exonCount;$i++) {
-            $exon_length = $exonEnds[$i] - $exonStarts[$i];
-            $distance_to_start = $exonStarts[$i] - $txStart;
-            $relative_distance_to_start = $distance_to_start/$length*800;
-            $relative_exon_length = $exon_length/$length*800;
-            $div .= "<div class='d-inline-block' style='background-color: #34495e;z-index: 2;padding-left: {$relative_distance_to_start}px;width: {$relative_exon_length}px;height:20px'></div>";
-        }
+//    public function align_elements($transcript) {
+//        $sql = "select * from hg19 where transcript_ID={$transcript}";
+//        $result = $this->db->query($sql)->row(0);
+//        $txStart = $result->txStart;
+//        $txEnd = $result->txEnd;
+//        $cdsStart = $result->cdsStart;
+//        $cdsEnd = $result->cdsEnd;
+//        $exonCount = $result->exonCount;
+//        $exonStarts = explode(",",$result->exonStarts);
+//        $exonEnds = explode(",",$result->exonEnds);
+//        $strand = $result->strand;
+//        $length = $txEnd - $txStart;
+//        $beforeCDS = $cdsStart - $txStart;
+//        $beforeCDS_percentage = $beforeCDS/$length;
+//        $relative_beforeCDS_length = $beforeCDS_percentage*800;
+//        $relative_CDS_length = ($cdsEnd-$cdsStart)/$length*800;
+//        $div = "<div class='d-flex flex-row align-items-center' style='background-color: #c5eff7;height: 20px;width: 800px;'>";
+//        $div .= "<div class='d-inline-block' style='background-color: #f5d76e;z-index: 1;width: {$relative_beforeCDS_length};height:5px;'></div>";
+//        $div .= "<div class='d-inline-block' style='background-color: #E67E22;z-index: 1;width: {$relative_CDS_length};height:5px;'></div>";
+//        for ($i=0;$i<$exonCount;$i++) {
+//            $exon_length = $exonEnds[$i] - $exonStarts[$i];
+//            $distance_to_start = $exonStarts[$i] - $txStart;
+//            $relative_distance_to_start = $distance_to_start/$length*800;
+//            $relative_exon_length = $exon_length/$length*800;
+//            $div .= "<div class='d-inline-block' style='background-color: #34495e;z-index: 2;padding-left: {$relative_distance_to_start}px;width: {$relative_exon_length}px;height:20px'></div>";
+//        }
+//
+//        $div .= "</div>";
+//        return $div;
+//
+//    }
 
-        $div .= "</div>";
-        return $div;
-
-    }
-
-    public function create_genome_view($data){
-        $cpg_ids = explode(",",$data['cpg_ids']);
-        $transcripts = $data['transcript_ID'];
-        $div = "";
-        $div .= "<div class='' id='mydiv'>";
-        foreach ($transcripts as $transcript) {
-            $div .= $this->align_elements($transcript);
-        }
-        foreach ($cpg_ids as $cpg_id) {
-            $div .= "<a type='button' class='btn btn-primary cpg_buttons h-100 d-inline-block' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 5px;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'> </a>";
-        }
-        $div .= "</div>";
-        return $div;
-    }
+//    public function create_genome_view($data){
+//        $cpg_ids = explode(",",$data['cpg_ids']);
+//        $transcripts = $data['transcript_ID'];
+//        $div = "";
+//        $div .= "<div class='' id='mydiv'>";
+//        foreach ($transcripts as $transcript) {
+//            $div .= $this->align_elements($transcript);
+//        }
+//        foreach ($cpg_ids as $cpg_id) {
+//            $div .= "<a type='button' class='btn btn-primary cpg_buttons h-100 d-inline-block' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 5px;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'> </a>";
+//        }
+//        $div .= "</div>";
+//        return $div;
+//    }
 
 
     public function search_by_id(){
