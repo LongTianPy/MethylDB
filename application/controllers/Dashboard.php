@@ -168,6 +168,7 @@ class Dashboard extends CI_Controller {
             $div .= "<button type='button' class='btn btn-primary cpg_buttons h-100 d-inline-block' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 5px;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'> </button>";
         }
         $div .= "</div>";
+        return $div;
     }
 
 
