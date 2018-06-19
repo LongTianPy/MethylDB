@@ -132,13 +132,8 @@ class Dashboard extends CI_Controller {
         $to = $data['to'];
         $range = $to-$from;
         $cpg_ids = explode(",",$data['cpg_ids']);
+        $previous = $from;
         for ($i=0;$i<count($cpg_ids);$i++){
-            $cpg_id = $cpg_ids[$i];
-            if ($i==0){
-                $previous = $from;
-            }else{
-                $previous = $cpg_ids[$i-1];
-            }
             $sql = "select * from Probeset where Probeset_ID='{$cpg_id}'";
             $result = $this->db->query($sql)->row(0);
             $chr = $result->CHR;
@@ -156,7 +151,7 @@ class Dashboard extends CI_Controller {
             $div .= "<tr><th scope='col'>Chromosome</th><td>{$chr}</td></tr>";
             $div .= "<tr><th scope='col'>Locus</th><td>{$locus}</td></tr>";
             $div .= "</tbody>";
-
+            $previous = $locus;
         }
 
         return $div;
