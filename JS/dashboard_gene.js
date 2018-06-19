@@ -54,6 +54,18 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal,cpg_id
 
 $(function () {
     $(document).ready(function () {
-        $('.cpg_buttons').popover();
+        popoverDetail = {
+            content: function () {
+                var detail_id = this.id;
+                return $('table#detail_' + detail_id).html();
+            },
+            title: 'Quick look of this CpG island',
+            trigger: 'hover',
+            animation: false,
+            placement: 'bottom',
+            html: true,
+            delay: {"show": 500, "hide": 100}
+        };
+        $('.popdetail').popover(popoverDetail);
     });
 });

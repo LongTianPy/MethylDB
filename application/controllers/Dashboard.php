@@ -40,8 +40,9 @@ class Dashboard extends CI_Controller {
         }elseif (isset($_POST['gene']) or isset($_GET['gene'])){
             $data = $this->search_by_gene();
             if (isset($data['script'])){
-                $buttons = $this->create_buttons($data);
+//                $buttons = $this->create_buttons($data);
 //                $buttons = $this->create_genome_view($data);
+                $buttons = $this->draw_div($data);
                 $page_data = array(
                     'place_holder' => $place_holder,
                     'buttons' => $buttons,
@@ -124,6 +125,43 @@ class Dashboard extends CI_Controller {
         return $buttons;
     }
 
+
+    public function mark_cpg($data){
+        $div = "";
+        $from = $data['from'];
+        $to = $data['to'];
+        $range = $to-$from;
+        $cpg_ids = $data['cpg_ids'];
+        foreach ($cpg_ids as $cpg_id) {
+            $sql = "select * from Probeset where Probeset_ID='{$cpg_id}'";
+            $result = $this->db->query($sql)->row(0);
+            $chr = $result->CHR;
+            $locus = $result->MAPINFO;
+            $distance_to_start = $locus-$from;
+            $relative_distance = $distance_to_start/$range * 800;
+            $div .= "<div class='d-inline h-100 popdetail' style='padding-left: {$relative_distance}px;'>";
+            $div .= "<a onclick='javascript:makeplot(this.value)' >";
+            $div .= "<div style='z-index: 10;border-left: 2px #34495e;'>";
+            $div .= "<table style='display:none;' id='detail_{$cpg_id}' class='table table-sm'>";
+            $div .= "<thead><tr><th scope='col'>Info</th><th scope='col'>Value</th></tr></thead>";
+            $div .= "<tbody>";
+            $div .= "<tr><th scope='col'>Probe ID</th><td>{$cpg_id}</td></tr>";
+            $div .= "<tr><th scope='col'>Chromosome</th><td>{$chr}</td></tr>";
+            $div .= "<tr><th scope='col'>Locus</th><td>{$locus}</td></tr>";
+            $div .= "</tbody>";
+            $div .= "</a>";
+            $div .= "</div>";
+        }
+        return $div;
+    }
+
+    public function draw_div($data){
+        $div = "<div style='height: 100px;'>";
+//        $div .= $table;
+        $div .= $this->mark_cpg($data);
+        $div .= "</div>";
+        return $div;
+    }
 //    public function align_elements($transcript) {
 //        $sql = "select * from hg19 where transcript_ID={$transcript}";
 //        $result = $this->db->query($sql)->row(0);
