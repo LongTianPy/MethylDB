@@ -17,6 +17,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         echo $js_parameters;
         echo $genomeD3plot_css;
         echo $genomeD3plot_js;
+        echo '
+        <style>
+        #linearchart {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+      #brush {
+        position: absolute;
+        top: 260px;
+        left: 200px;
+      }
+      #resizeButton {
+        position: absolute;
+        top: 300px;
+        left: 100px;
+</style>
+        ';
     }
     ?>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
