@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if(isset($json_file)){
         echo $genomeD3plot_css;
         echo $genomeD3plot_js;
-        echo $json_file;
+        echo $js_parameters;
     }
     ?>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
