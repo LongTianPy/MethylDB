@@ -148,6 +148,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo "</h5>";
             }elseif (isset($buttons)){
                 echo $buttons;
+            }elseif (isset($json_file)){
+                echo "<div id='linearchart'></div>";
+                echo "<div id='brush'></div>";
             }
             ?>
             <div class="my-4 w-100 figure-img img-fluid rounded" id="myChart" width="900" height="600" style="min-height: 600px;">
