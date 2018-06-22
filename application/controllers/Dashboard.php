@@ -288,9 +288,9 @@ class Dashboard extends CI_Controller {
 //</script>";
         $track_jason = json_encode($tracks,JSON_PRETTY_PRINT);
         $filename = uniqid();
-        $json_file = "/home/long-lamp-username/MethylDB/result/" . $filename . ".json";
+        $json_file = "/home/long-lamp-username/MethylDB/Result/" . $filename . ".json";
         file_put_contents($json_file,$track_jason);
-        $json_file_path = "/MethylDB/result/" . $filename . ".json";
+        $json_file_path = "/MethylDB/Result/" . $filename . ".json";
         return $json_file_path;
     }
 
