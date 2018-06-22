@@ -1,9 +1,12 @@
-$.getJSON(json_file,function (data) {
-    var tracks = [];
-    $.each(data,function (index,value) {
-        tracks.push(value);
-    })
-    console.log(tracks);
+var tracks;
+$.get(json_file,function (data) {
+    // var tracks = [];
+    // $.each(data,function (index,value) {
+    //     tracks.push(value);
+    // })
+    // console.log(tracks);
+    tracks = data;
+
     var linearlayout = {
         genomesize: end-start,
         height:250,
