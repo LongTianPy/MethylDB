@@ -9,17 +9,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="/MethylDB/CSS/bootstrap.min.css" >
     <link rel="stylesheet" href="/MethylDB/CSS/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.css">
+    <script>
+        var tracks = <?php if (isset($json_file)){echo json_encode($json_file);}?>
+    </script>
     <?php
     if(isset($json_file)){
         echo $genomeD3plot_css;
         echo $genomeD3plot_js;
         echo $js_parameters;
-
     }
     ?>
-    <script>
-        var tracks = <?php if (isset($json_file)){echo json_encode($json_file);}?>
-    </script>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
