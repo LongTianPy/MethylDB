@@ -381,6 +381,7 @@ class Dashboard extends CI_Controller {
                 $call_this_script = '<script src="/MethylDB/JS/dashboard_gene.js" type="text/javascript"></script>';
                 $final_result = array(
                     'transcript_ID' => $transcripts,
+                    'chr'=>$chr,
                     'gene' => $gene,
                     'from' => $start,
                     'to' => $end,
