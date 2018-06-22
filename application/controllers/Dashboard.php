@@ -52,7 +52,7 @@ class Dashboard extends CI_Controller {
                     'genomeD3plot_css'=> '<link rel="stylesheet" href="/MethylDB/CSS/linearplot.css" ><link rel="stylesheet" href="/MethylDB/CSS/tracks.css" >',
                     'genomeD3plot_js' => '<script src="'. $json_file .'" type="text/javascript"></script><script src="/MethylDB/JS/d3.min.js" type="text/javascript"></script><script src="/MethylDB/JS/d3.tip.js" type="text/javascript"></script><script src="/MethylDB/JS/linearplot.js" type="text/javascript"></script><script src="/MethylDB/JS/linearbrush.js" type="text/javascript"></script><script src="/MethylDB/JS/run_linearplot.js" type="text/javascript"></script>',
                     'script' => $data['script'],
-                    'js_parameters' => "<script>var start={$data['from']};var end={$data['to']};var json_file={$json_file}</script>",
+                    'js_parameters' => "<script>var start={$data['from']};var end={$data['to']}</script>",
                 );
             }else{
                 $page_data = array(
@@ -270,7 +270,7 @@ class Dashboard extends CI_Controller {
         $json_file = "/var/www/html/MethylDB/Result/" . $filename . ".json";
         file_put_contents($json_file,$track_jason);
         $json_file_path = "/MethylDB/Result/" . $filename . ".json";
-        return $json_file_path;
+        return $tracks;
     }
 
 
