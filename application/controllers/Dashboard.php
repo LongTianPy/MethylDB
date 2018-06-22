@@ -264,28 +264,7 @@ class Dashboard extends CI_Controller {
             'showLabels'=>true,
             'items'=>$cpg_items,
         );
-        $tracks = array('tracks' =>array($genes,$exons,$cpgs));
-//        $tracks = "<script>
-//            var tracks = [
-//                { trackName: 'track1',
-//                  trackType: 'stranded',
-//                  visible: true,
-//                  inner_radius: 80,
-//                  outer_radius: 120,
-//                  trackFeatures: 'complex',
-//                  featureThreshold: 7000000,
-//                  mouseover_callback: 'islandPopup',
-//                  mouseout_callback: 'islandPopupClear',
-//                  linear_mouseclick: 'linearPopup',
-//                  showLabels: true,
-//                  showTooltip: true,
-//                  linear_mouseclick: 'linearClick',
-//                  items:
-//                }
-//
-//            ]
-//
-//</script>";
+        $tracks = array($genes,$exons,$cpgs);
         $track_jason = json_encode($tracks,JSON_PRETTY_PRINT);
         $filename = uniqid();
         $json_file = "/var/www/html/MethylDB/Result/" . $filename . ".json";
