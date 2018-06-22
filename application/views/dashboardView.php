@@ -151,7 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }elseif (isset($json_file)){
                 echo "<div id='body' class='w-100'>";
                 echo "<div id='linearchart'></div>";
-                echo "<div id='brush'></div>";
+//                echo "<div id='brush'></div>";
                 echo "</div>";
             }
             ?>
