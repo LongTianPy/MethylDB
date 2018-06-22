@@ -42,11 +42,17 @@ class Dashboard extends CI_Controller {
             if (isset($data['script'])){
 //                $buttons = $this->create_buttons($data);
 //                $buttons = $this->create_genome_view($data);
-                $buttons = $this->draw_div($data);
+//                $buttons = $this->draw_div($data);
+                $json_file = $this->generage_genome_data($data);
+
                 $page_data = array(
                     'place_holder' => $place_holder,
-                    'buttons' => $buttons,
+//                    'buttons' => $buttons,
+                    'json_file' => $json_file,
+                    'genomeD3plot_css'=> '<link rel="stylesheet" href="/MethylDB/CSS/linearplot.css" ><link rel="stylesheet" href="/MethylDB/CSS/tracks.css" >',
+                    'genomeD3plot_js' => '<script src="'. $json_file .'" type="text/javascript"></script><script src="/MethylDB/JS/d3.min.js" type="text/javascript"></script><script src="/MethylDB/JS/d3.tip.js" type="text/javascript"></script><script src="/MethylDB/JS/linearplot.js" type="text/javascript"></script><script src="/MethylDB/JS/linearbrush.js" type="text/javascript"></script><script src="/MethylDB/JS/run_linearplot.js" type="text/javascript"></script>',
                     'script' => $data['script'],
+                    'js_parameters' => "<script>var start={$data['from']};var end={$data['to']};var json_file={$json_file}</script>"
                 );
             }else{
                 $page_data = array(
@@ -75,7 +81,7 @@ class Dashboard extends CI_Controller {
     }
 
     public function create_range_bar($data){
-        $positions = [];
+        $positions = array();
         $cpg_ids = explode(",",$data['cpg_ids']);
         foreach ($cpg_ids as $cpg_id) {
             $pos = $this->get_position($cpg_id);
@@ -86,7 +92,7 @@ class Dashboard extends CI_Controller {
         $length = $end - $start;
         $data_slider_ticks = "[" . $start. "," . implode(",",$positions) . "," . $end . "]";
         $data_slider_ticks_labels = "[" . $start . "," .$data['cpg_ids'] . "," . $end . "]";
-        $percentages = [];
+        $percentages = array();
         foreach ($positions as $pos){
             $percentages[] = ($pos-$start)/$length * 100;
         }
@@ -168,52 +174,125 @@ class Dashboard extends CI_Controller {
         $div .= "</div>";
         return $div;
     }
-//    public function align_elements($transcript) {
-//        $sql = "select * from hg19 where transcript_ID={$transcript}";
-//        $result = $this->db->query($sql)->row(0);
-//        $txStart = $result->txStart;
-//        $txEnd = $result->txEnd;
-//        $cdsStart = $result->cdsStart;
-//        $cdsEnd = $result->cdsEnd;
-//        $exonCount = $result->exonCount;
-//        $exonStarts = explode(",",$result->exonStarts);
-//        $exonEnds = explode(",",$result->exonEnds);
-//        $strand = $result->strand;
-//        $length = $txEnd - $txStart;
-//        $beforeCDS = $cdsStart - $txStart;
-//        $beforeCDS_percentage = $beforeCDS/$length;
-//        $relative_beforeCDS_length = $beforeCDS_percentage*800;
-//        $relative_CDS_length = ($cdsEnd-$cdsStart)/$length*800;
-//        $div = "<div class='d-flex flex-row align-items-center' style='background-color: #c5eff7;height: 20px;width: 800px;'>";
-//        $div .= "<div class='d-inline-block' style='background-color: #f5d76e;z-index: 1;width: {$relative_beforeCDS_length};height:5px;'></div>";
-//        $div .= "<div class='d-inline-block' style='background-color: #E67E22;z-index: 1;width: {$relative_CDS_length};height:5px;'></div>";
-//        for ($i=0;$i<$exonCount;$i++) {
-//            $exon_length = $exonEnds[$i] - $exonStarts[$i];
-//            $distance_to_start = $exonStarts[$i] - $txStart;
-//            $relative_distance_to_start = $distance_to_start/$length*800;
-//            $relative_exon_length = $exon_length/$length*800;
-//            $div .= "<div class='d-inline-block' style='background-color: #34495e;z-index: 2;padding-left: {$relative_distance_to_start}px;width: {$relative_exon_length}px;height:20px'></div>";
-//        }
-//
-//        $div .= "</div>";
-//        return $div;
-//
-//    }
 
-//    public function create_genome_view($data){
-//        $cpg_ids = explode(",",$data['cpg_ids']);
-//        $transcripts = $data['transcript_ID'];
-//        $div = "";
-//        $div .= "<div class='' id='mydiv'>";
-//        foreach ($transcripts as $transcript) {
-//            $div .= $this->align_elements($transcript);
-//        }
-//        foreach ($cpg_ids as $cpg_id) {
-//            $div .= "<a type='button' class='btn btn-primary cpg_buttons h-100 d-inline-block' value='{$cpg_id}' onclick='javascript:makeplot(this.value)' style='width: 5px;' data-container='body' data-toggle='popover' data-placement='top' data-content='{$cpg_id}' data-trigger='hover'> </a>";
-//        }
-//        $div .= "</div>";
-//        return $div;
-//    }
+    public function generage_genome_data($data){
+        $chr = $data['chr'];
+        $from = $data['from'];
+        $to = $data['to'];
+        $cpg_ids = explode(",",$data['cpg_ids']);
+        $transcript_ids = $data['transcript_ID'];
+        $gene_items = array();
+        $exon_items = array();
+        $cpg_items = array();
+        $exon_id = 1;
+        $gene_id = 1;
+        $cpgid = 1;
+        foreach ($transcript_ids as $transcript_id) {
+            $sql = "select * from hg19 where transcript_ID={$transcript_id}";
+            $result = $this->db->query($sql)->row(0);
+            if ($result->strand == "+"){
+                $strand = 1;
+            }else{
+                $strand = -1;
+            }
+            $gene_item = array(
+                'id' => $gene_id,
+                'start' => $result->txStart,
+                'end' => $result->txEnd,
+                'name' => $result->geneName,
+                'strand' => $strand,
+            );
+            $gene_items[] = $gene_item;
+            $exonStarts = explode(",",$result->exonStarts);
+            $exonEnds = explode(",",$result->exonEnds);
+            for ($i=0;$i<$result->exonCount;$i++){
+                $exonStart = $exonStarts[$i];
+                $exonEnd = $exonEnds[$i];
+                $exon_item = array(
+                    'id' => $exon_id,
+                    'start' => $exonStart,
+                    'end' => $exonEnd,
+                    'name' => $result->geneName . '_exon_' . $exon_id,
+                    'strand' => $strand,
+                );
+                $exon_items[] = $exon_item;
+                $exon_id ++;
+            }
+            $gene_id ++;
+        }
+        foreach ($cpg_ids as $cpg_id){
+            $sql = "select MAPINFO from Probeset where Probeset_ID='{$cpg_id}'";
+            $cpg_result = $this->db->query($sql)->row(0);
+            $cpg_item = array(
+                'id' => $cpgid,
+                'start' => $cpg_result->MAPINFO,
+                'end' => $cpg_result->MAPINFO+1,
+                'name' => $cpg_id,
+            );
+            $cpg_items[] = $cpg_item;
+            $cpgid ++;
+        }
+        $genes = array(
+            'trackName'=>'track1',
+            'trackType'=>'stranded',
+            'visible'=>true,
+            'inner_radius' =>80,
+            'outer_radius'=>120,
+            'trackFeatures'=>'complex',
+            'featureThreshold'=>7000000,
+            'showLabels'=>true,
+            'showTooltip'=>true,
+            'items'=>$gene_items,
+        );
+        $exons = array(
+            'trackName'=>'track2',
+            'trackType'=>'stranded',
+            'visible'=>true,
+            'inner_radius' =>195,
+            'outer_radius'=>234,
+            'centre_line_stroke'=>"grey",
+            'showLabels'=>true,
+            'items'=>$exon_items,
+        );
+        $cpgs = array(
+            'trackName'=>'gapTrack',
+            'trackType'=>'gap',
+            'inner_radius'=>25,
+            'outer_radius'=>234,
+            'linear_mouseclick'=>'linearClick',
+            'showTooltip'=>true,
+            'showLabels'=>true,
+            'items'=>$cpg_items,
+        );
+        $tracks = array('tracks' =>array($genes,$exons,$cpgs));
+//        $tracks = "<script>
+//            var tracks = [
+//                { trackName: 'track1',
+//                  trackType: 'stranded',
+//                  visible: true,
+//                  inner_radius: 80,
+//                  outer_radius: 120,
+//                  trackFeatures: 'complex',
+//                  featureThreshold: 7000000,
+//                  mouseover_callback: 'islandPopup',
+//                  mouseout_callback: 'islandPopupClear',
+//                  linear_mouseclick: 'linearPopup',
+//                  showLabels: true,
+//                  showTooltip: true,
+//                  linear_mouseclick: 'linearClick',
+//                  items:
+//                }
+//
+//            ]
+//
+//</script>";
+        $track_jason = json_encode($tracks,JSON_PRETTY_PRINT);
+        $filename = uniqid();
+        $json_file = "/home/long-lamp-username/MethylDB/result/" . $filename . ".json";
+        file_put_contents($json_file,$track_jason);
+        $json_file_path = "/MethylDB/result/" . $filename . ".json";
+        return $json_file_path;
+    }
 
 
     public function search_by_id(){
@@ -274,7 +353,7 @@ class Dashboard extends CI_Controller {
         }
         settype($gene,'string');
         strtoupper($gene);
-        $transcripts = [];
+        $transcripts = array();
         $sql = "select * from hg19 where geneName='{$gene}'";
         $result = $this->db->query($sql)->result();
         if (count($result)>0){
@@ -336,7 +415,7 @@ class Dashboard extends CI_Controller {
         }
         $sql = "select * from hg19 where chrom='chr'{$chr} and txStart>{$start} and txEnd<{$end}";
         $result = $this->db->query($sql)->result();
-        $transcripts = [];
+        $transcripts = array();
         foreach ($result as $row) {
             $transcripts[] = $row->transcript_ID;
         }

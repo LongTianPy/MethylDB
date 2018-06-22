@@ -9,6 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="/MethylDB/CSS/bootstrap.min.css" >
     <link rel="stylesheet" href="/MethylDB/CSS/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.css">
+    <?php
+    if(isset($json_file)){
+        echo $genomeD3plot_css;
+
+    }
+    ?>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
@@ -164,6 +170,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js" type="text/javascript"></script>
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
 <?php
+if (isset($json_file)){
+    echo $genomeD3plot_js;
+}
+
 if (isset($script)){
     echo $script;
 }
