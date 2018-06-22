@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     ?>
     <script>
-        var tracks = <?php if (isset($json_file)){echo $json_file;}?>
+        var tracks = <?php if (isset($json_file)){echo json_encode($json_file);}?>
     </script>
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
