@@ -43,6 +43,11 @@ function resizeLinearPlot() {
 linearTrack.resize(1000);
 }
 
+function linearPopup(trackName, d) {
+    console.log(d);
+    alert("Received click event from track " + trackName + ", item: " + JSON.stringify(d));
+}
+
 /* Catch a click callback on the linear plot and show what
 information we're given about the track item */
 

@@ -243,6 +243,7 @@ class Dashboard extends CI_Controller {
             'showLabels'=>true,
             'showTooltip'=>true,
             'items'=>$gene_items,
+            'linear_mouseclick'=>'linearPopup',
         );
         $exons = array(
             'trackName'=>'track2',
@@ -253,6 +254,7 @@ class Dashboard extends CI_Controller {
             'centre_line_stroke'=>"grey",
             'showLabels'=>true,
             'items'=>$exon_items,
+            'linear_mouseclick'=>'linearPopup',
         );
         $cpgs = array(
             'trackName'=>'gapTrack',
