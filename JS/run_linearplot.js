@@ -1,5 +1,5 @@
 var linearlayout = {
-    genomesize: end-start+100000,
+    genomesize: end-start,
     height:250,
     width:1000,
     container: '#linearchart',
@@ -13,19 +13,19 @@ var contextLayout = {
 };
 
 var linearTrack = new genomeTrack(linearlayout,tracks);
-// var brush = new linearBrush(contextLayout,linearTrack);
+var brush = new linearBrush(contextLayout,linearTrack);
 
-// linearTrack.addBrushCallback(brush);
-// window.onload = function() {
-//     if('undefined' !== typeof cTrack) {
-//         console.log("Hooking up circular plot callback");
-//         linearTrack.addBrushCallback(cTrack);
-//     }
-// }
+linearTrack.addBrushCallback(brush);
+window.onload = function() {
+    if('undefined' !== typeof cTrack) {
+        console.log("Hooking up circular plot callback");
+        linearTrack.addBrushCallback(cTrack);
+    }
+}
 /* Callback to demo resizing the linear plot */
-// function resizeLinearPlot() {
-//     linearTrack.resize(1000);
-// }
+function resizeLinearPlot() {
+    linearTrack.resize(1000);
+}
 
 /* Catch a click callback on the linear plot and show what
    information we're given about the track item */
@@ -38,15 +38,6 @@ function linearClick(trackName, d) {
 
 
 
-/* Callback to demo resizing the linear plot */
-// function resizeLinearPlot() {
-// linearTrack.resize(1000);
-// }
-
-function linearPopup(trackName, d) {
-    console.log(d);
-    alert("Received click event from track " + trackName + ", item: " + JSON.stringify(d));
-}
 
 function makeplot(cpg_id){
 var file = "/MethylDB/Result/" + cpg_id + ".txt";
