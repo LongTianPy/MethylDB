@@ -42,7 +42,7 @@ function genomeTrack(layout,tracks) {
     if('undefined' !== typeof layout.offset) {
         this.start_offset = layout.offset;
     } else {
-        this.start_offset = 0;
+        this.start_offset = layout.offset;
     }
 
     this.itemRects = [];
