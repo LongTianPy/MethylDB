@@ -95,7 +95,7 @@ function genomeTrack(layout,tracks) {
         .attr("transform", "translate(0,0)");
     //	.attr("transform", "translate(" + this.layout.left_margin + ",0)");
 
-    this.drawFeatures();
+    // this.drawFeatures();
 
     this.main = this.chart.append("g")
         .attr("transform", "translate(" + this.layout.left_margin + ",0)")
