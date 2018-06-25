@@ -1014,159 +1014,159 @@ genomeTrack.prototype.update_finished = function(startbp, endbp, params) {
 
 }
 
-genomeTrack.prototype.resize = function(newWidth) {
-    this.layout.width = newWidth;
-
-    this.dragbar
-        .attr("transform", "translate(" + (newWidth -
-            this.layout.right_margin) + "," + (this.dragbar_y_mid-15) + ")")
-
-    this.layout.width_without_margins =
-        this.layout.width - this.layout.left_margin -
-        this.layout.right_margin;
-
-    this.x
-        .range([0,this.layout.width_without_margins]);
-    this.x1
-        .range([0,this.layout.width_without_margins]);
-
-    this.chart
-        .attr("width", this.layout.width)
-
-    this.clipPath
-        .attr("width", this.layout.width_without_margins)
-
-    this.main
-        .attr("width", this.layout.width_without_margins)
-
-    this.redraw();
-
-}
-
-genomeTrack.prototype.dragresize = function(d) {
-    var newWidth = d3.event.x;
-
-    //    console.log(this.layout.containerid);
-    this.resize(newWidth);
-    //    d3.event.preventDefault();
-
-}
-
-genomeTrack.prototype.redraw = function() {
-
-    for(var i = 0; i < this.tracks.length; i++) {
-
-        if("undefined" !== this.tracks[i].skipLinear
-            &&  this.tracks[i].skipLinear == true) {
-            continue;
-        }
-
-        switch(this.tracks[i].trackType) {
-            case 'gap':
-                this.displayGapTrack(this.tracks[i], i);
-                break;
-            case "stranded":
-                this.displayStranded(this.tracks[i], i);
-                break;
-            case "track":
-                this.displayTrack(this.tracks[i], i);
-                break;
-            case "glyph":
-                this.displayGlyphTrack(this.tracks[i], i);
-                break;
-            case "plot":
-                this.displayPlotTrack(this.tracks[i], i);
-                break;
-            default:
-            // Do nothing for an unknown track type
-        }
-    }
-
-    this.axisContainer.select(".xaxislinear").call(this.xAxis);
-
-}
-
-genomeTrack.prototype.rescale = function() {
-    var cfg = this.layout;
-
-    var reset_s = 0;
-    if ((this.x1.domain()[1] - this.x1.domain()[0]) >= (this.genomesize - this.start_offset)) {
-        this.zoom.x(this.x1.domain([this.start_offset, this.genomesize + this.start_offset]));
-        reset_s = 1;
-    }
-
-    if (reset_s == 1) { // Both axes are full resolution. Reset.
-        this.zoom.scale(1);
-        this.zoom.translate([0,0]);
-    }
-    else {
-        if (this.x1.domain()[0] < this.start_offset) {
-            this.x1.domain([this.start_offset, this.x1.domain()[1] - this.x1.domain()[0] + this.start_offset]);
-        }
-        if (this.x1.domain()[1] > this.genomesize + this.start_offset) {
-            var xdom0 = this.x1.domain()[0] - this.x1.domain()[1] + this.genomesize + this.start_offset;
-            this.x1.domain([xdom0, this.genomesize + this.start_offset]);
-        }
-    }
-
-    var cur_domain = this.x1.domain();
-    this.visStart = cur_domain[0];
-    this.visEnd = cur_domain[1];
-
-    if('undefined' !== typeof this.callbackObj) {
-        if( Object.prototype.toString.call( this.callbackObj ) === '[object Array]' ) {
-            for(var obj in this.callbackObj) {
-                if(this.callbackObj.hasOwnProperty(obj)) {
-                    this.callbackObj[obj].update(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
-                }
-            }
-        } else {
-            this.callbackObj.update(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
-        }
-    }
-
-    this.redraw();
-
-}
-
-genomeTrack.prototype.addBrushCallback = function(obj) {
-
-    // We allow multiple brushes to be associated with a linear plot, if we have
-    // a brush already, add this new one on.  Otherwise just remember it.
-
-    if('undefined' !== typeof this.callbackObj) {
-
-        if( Object.prototype.toString.call( obj ) === '[object Array]' ) {
-            this.callbackObj.push(obj);
-        } else {
-            var tmpobj = this.callbackObj;
-            this.callbackObj = [tmpobj, obj];
-        }
-    } else {
-        this.callbackObj = obj;
-    }
-
-    // And make sure our new brush is updated to reflect
-    // the current visible area
-    obj.update(this.visStart, this.visEnd);
-}
-
-genomeTrack.prototype.callBrushFinished = function() {
-    var cfg = this.layout;
-
-    if('undefined' !== typeof this.callbackObj) {
-        if( Object.prototype.toString.call( this.callbackObj ) === '[object Array]' ) {
-            for(var obj in this.callbackObj) {
-                if(this.callbackObj.hasOwnProperty(obj)) {
-                    this.callbackObj[obj].update_finished(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
-                }
-            }
-        } else {
-            this.callbackObj.update_finished(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
-        }
-    }
-
-}
+// genomeTrack.prototype.resize = function(newWidth) {
+//     this.layout.width = newWidth;
+//
+//     this.dragbar
+//         .attr("transform", "translate(" + (newWidth -
+//             this.layout.right_margin) + "," + (this.dragbar_y_mid-15) + ")")
+//
+//     this.layout.width_without_margins =
+//         this.layout.width - this.layout.left_margin -
+//         this.layout.right_margin;
+//
+//     this.x
+//         .range([0,this.layout.width_without_margins]);
+//     this.x1
+//         .range([0,this.layout.width_without_margins]);
+//
+//     this.chart
+//         .attr("width", this.layout.width)
+//
+//     this.clipPath
+//         .attr("width", this.layout.width_without_margins)
+//
+//     this.main
+//         .attr("width", this.layout.width_without_margins)
+//
+//     this.redraw();
+//
+// }
+//
+// genomeTrack.prototype.dragresize = function(d) {
+//     var newWidth = d3.event.x;
+//
+//     //    console.log(this.layout.containerid);
+//     this.resize(newWidth);
+//     //    d3.event.preventDefault();
+//
+// }
+//
+// genomeTrack.prototype.redraw = function() {
+//
+//     for(var i = 0; i < this.tracks.length; i++) {
+//
+//         if("undefined" !== this.tracks[i].skipLinear
+//             &&  this.tracks[i].skipLinear == true) {
+//             continue;
+//         }
+//
+//         switch(this.tracks[i].trackType) {
+//             case 'gap':
+//                 this.displayGapTrack(this.tracks[i], i);
+//                 break;
+//             case "stranded":
+//                 this.displayStranded(this.tracks[i], i);
+//                 break;
+//             case "track":
+//                 this.displayTrack(this.tracks[i], i);
+//                 break;
+//             case "glyph":
+//                 this.displayGlyphTrack(this.tracks[i], i);
+//                 break;
+//             case "plot":
+//                 this.displayPlotTrack(this.tracks[i], i);
+//                 break;
+//             default:
+//             // Do nothing for an unknown track type
+//         }
+//     }
+//
+//     this.axisContainer.select(".xaxislinear").call(this.xAxis);
+//
+// }
+//
+// genomeTrack.prototype.rescale = function() {
+//     var cfg = this.layout;
+//
+//     var reset_s = 0;
+//     if ((this.x1.domain()[1] - this.x1.domain()[0]) >= (this.genomesize - this.start_offset)) {
+//         this.zoom.x(this.x1.domain([this.start_offset, this.genomesize + this.start_offset]));
+//         reset_s = 1;
+//     }
+//
+//     if (reset_s == 1) { // Both axes are full resolution. Reset.
+//         this.zoom.scale(1);
+//         this.zoom.translate([0,0]);
+//     }
+//     else {
+//         if (this.x1.domain()[0] < this.start_offset) {
+//             this.x1.domain([this.start_offset, this.x1.domain()[1] - this.x1.domain()[0] + this.start_offset]);
+//         }
+//         if (this.x1.domain()[1] > this.genomesize + this.start_offset) {
+//             var xdom0 = this.x1.domain()[0] - this.x1.domain()[1] + this.genomesize + this.start_offset;
+//             this.x1.domain([xdom0, this.genomesize + this.start_offset]);
+//         }
+//     }
+//
+//     var cur_domain = this.x1.domain();
+//     this.visStart = cur_domain[0];
+//     this.visEnd = cur_domain[1];
+//
+//     if('undefined' !== typeof this.callbackObj) {
+//         if( Object.prototype.toString.call( this.callbackObj ) === '[object Array]' ) {
+//             for(var obj in this.callbackObj) {
+//                 if(this.callbackObj.hasOwnProperty(obj)) {
+//                     this.callbackObj[obj].update(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
+//                 }
+//             }
+//         } else {
+//             this.callbackObj.update(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
+//         }
+//     }
+//
+//     this.redraw();
+//
+// }
+//
+// genomeTrack.prototype.addBrushCallback = function(obj) {
+//
+//     // We allow multiple brushes to be associated with a linear plot, if we have
+//     // a brush already, add this new one on.  Otherwise just remember it.
+//
+//     if('undefined' !== typeof this.callbackObj) {
+//
+//         if( Object.prototype.toString.call( obj ) === '[object Array]' ) {
+//             this.callbackObj.push(obj);
+//         } else {
+//             var tmpobj = this.callbackObj;
+//             this.callbackObj = [tmpobj, obj];
+//         }
+//     } else {
+//         this.callbackObj = obj;
+//     }
+//
+//     // And make sure our new brush is updated to reflect
+//     // the current visible area
+//     obj.update(this.visStart, this.visEnd);
+// }
+//
+// genomeTrack.prototype.callBrushFinished = function() {
+//     var cfg = this.layout;
+//
+//     if('undefined' !== typeof this.callbackObj) {
+//         if( Object.prototype.toString.call( this.callbackObj ) === '[object Array]' ) {
+//             for(var obj in this.callbackObj) {
+//                 if(this.callbackObj.hasOwnProperty(obj)) {
+//                     this.callbackObj[obj].update_finished(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
+//                 }
+//             }
+//         } else {
+//             this.callbackObj.update_finished(this.x1.domain()[0], this.x1.domain()[1], { plotid: cfg.plotid } );
+//         }
+//     }
+//
+// }
 
 ////////////////////////////////////////////////
 //
