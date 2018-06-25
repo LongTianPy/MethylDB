@@ -65,11 +65,11 @@ function genomeTrack(layout,tracks) {
     // We need x1 and y1 in the initialization's scope too
     // to deal with passing it in to make the lollipops
 
-    this.zoom = d3.behavior.zoom()
-        .x(this.x1)
-        .on("zoomstart", function () {d3.event.sourceEvent.preventDefault()} )
-        .on("zoom", this.rescale.bind(this))
-        .on("zoomend", this.callBrushFinished.bind(this) );
+    // this.zoom = d3.behavior.zoom()
+    //     .x(this.x1)
+    //     .on("zoomstart", function () {d3.event.sourceEvent.preventDefault()} )
+    //     .on("zoom", this.rescale.bind(this))
+    //     .on("zoomend", this.callBrushFinished.bind(this) );
 
     if('undefined' == typeof layout.plotid) {
         this.layout.plotid = layout.container.slice(1);

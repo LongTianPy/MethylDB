@@ -23,9 +23,9 @@ var linearTrack = new genomeTrack(linearlayout,tracks);
 //     }
 // }
 /* Callback to demo resizing the linear plot */
-function resizeLinearPlot() {
-    linearTrack.resize(1000);
-}
+// function resizeLinearPlot() {
+//     linearTrack.resize(1000);
+// }
 
 /* Catch a click callback on the linear plot and show what
    information we're given about the track item */
@@ -39,22 +39,13 @@ function linearClick(trackName, d) {
 
 
 /* Callback to demo resizing the linear plot */
-function resizeLinearPlot() {
-linearTrack.resize(1000);
-}
+// function resizeLinearPlot() {
+// linearTrack.resize(1000);
+// }
 
 function linearPopup(trackName, d) {
     console.log(d);
     alert("Received click event from track " + trackName + ", item: " + JSON.stringify(d));
-}
-
-/* Catch a click callback on the linear plot and show what
-information we're given about the track item */
-
-function linearClick(trackName, d) {
-console.log(d);
-var cpg_id = d.name;
-makeplot(cpg_id);
 }
 
 function makeplot(cpg_id){
