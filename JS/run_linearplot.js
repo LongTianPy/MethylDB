@@ -1,5 +1,5 @@
 var linearlayout = {
-    genomesize: end-start,
+    genomesize: end-start+100000,
     height:250,
     width:1000,
     container: '#linearchart',
