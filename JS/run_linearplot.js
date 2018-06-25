@@ -13,7 +13,7 @@ var contextLayout = {
 };
 
 var linearTrack = new genomeTrack(linearlayout,tracks);
-var brush = new linearBrush(contextLayout,linearTrack);
+// var brush = new linearBrush(contextLayout,linearTrack);
 
 // linearTrack.addBrushCallback(brush);
 // window.onload = function() {
@@ -21,7 +21,7 @@ var brush = new linearBrush(contextLayout,linearTrack);
 //         console.log("Hooking up circular plot callback");
 //         linearTrack.addBrushCallback(cTrack);
 //     }
-}
+// }
 /* Callback to demo resizing the linear plot */
 function resizeLinearPlot() {
     linearTrack.resize(1000);
