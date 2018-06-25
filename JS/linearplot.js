@@ -6,7 +6,7 @@ var linearTrackDefaults = {
     bottom_margin: 5,
     axis_height: 50,
     name: "defaultlinear",
-    dragresize: true
+    dragresize: false,
 };
 
 function genomeTrack(layout,tracks) {
