@@ -15,12 +15,12 @@ var contextLayout = {
 var linearTrack = new genomeTrack(linearlayout,tracks);
 var brush = new linearBrush(contextLayout,linearTrack);
 
-linearTrack.addBrushCallback(brush);
-window.onload = function() {
-    if('undefined' !== typeof cTrack) {
-        console.log("Hooking up circular plot callback");
-        linearTrack.addBrushCallback(cTrack);
-    }
+// linearTrack.addBrushCallback(brush);
+// window.onload = function() {
+//     if('undefined' !== typeof cTrack) {
+//         console.log("Hooking up circular plot callback");
+//         linearTrack.addBrushCallback(cTrack);
+//     }
 }
 /* Callback to demo resizing the linear plot */
 function resizeLinearPlot() {
