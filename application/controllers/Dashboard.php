@@ -335,17 +335,17 @@ class Dashboard extends CI_Controller {
         settype($gene,'string');
         strtoupper($gene);
         $transcripts = array();
-        $sql = "select * from Gene where gene='{$gene}'";
+        $sql = "select * from hg19 where geneName='{$gene}'";
         $result = $this->db->query($sql)->result();
         if (count($result)>0){
             foreach ($result as $row) {
                 $transcripts[] = $row->transcript_ID;
             }
             $result = $result[0];
-            $chr = $result->CHR;
+            $chr = $result->chrom;
             $chr = substr($chr,3);
-            $start = $result->start;
-            $end = $result->end;
+            $start = $result->txStart;
+            $end = $result->txEnd;
             $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
             exec($cmd);
             $row_nums = count(file($output));
