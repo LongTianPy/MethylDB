@@ -50,7 +50,7 @@ class Dashboard extends CI_Controller {
 //                    'buttons' => $buttons,
                     'json_file' => $json_file,
                     'genomeD3plot_css'=> '<link rel="stylesheet" href="/MethylDB/CSS/linearplot.css" ><link rel="stylesheet" href="/MethylDB/CSS/tracks.css" >',
-                    'genomeD3plot_js' => '<script src="/MethylDB/JS/d3.min.js" type="text/javascript"></script><script src="/MethylDB/JS/d3.tip.js" type="text/javascript"></script><script src="/MethylDB/JS/linearplot.js" type="text/javascript"></script><script src="/MethylDB/JS/run_linearplot.js" type="text/javascript"></script>',
+                    'genomeD3plot_js' => '<script src="/MethylDB/JS/d3.min.js" type="text/javascript"></script><script src="/MethylDB/JS/d3.tip.js" type="text/javascript"></script><script src="/MethylDB/JS/linearplot.js" type="text/javascript"></script><script src="/MethylDB/JS/linearbrush.js" type="text/javascript"></script><script src="/MethylDB/JS/run_linearplot.js" type="text/javascript"></script>',
                     'script' => $data['script'],
                     'js_parameters' => "<script>var start={$data['from']};var end={$data['to']}</script>",
                 );
@@ -243,6 +243,7 @@ class Dashboard extends CI_Controller {
             'showLabels'=>true,
             'showTooltip'=>true,
             'items'=>$gene_items,
+            'linear_mouseclick'=>'linearPopup',
         );
         $exons = array(
             'trackName'=>'track2',
@@ -253,6 +254,7 @@ class Dashboard extends CI_Controller {
             'centre_line_stroke'=>"grey",
             'showLabels'=>true,
             'items'=>$exon_items,
+            'linear_mouseclick'=>'linearPopup',
         );
         $cpgs = array(
             'trackName'=>'gapTrack',
@@ -333,17 +335,17 @@ class Dashboard extends CI_Controller {
         settype($gene,'string');
         strtoupper($gene);
         $transcripts = array();
-        $sql = "select * from hg19 where geneName='{$gene}'";
+        $sql = "select * from Gene where gene='{$gene}'";
         $result = $this->db->query($sql)->result();
         if (count($result)>0){
             foreach ($result as $row) {
                 $transcripts[] = $row->transcript_ID;
             }
             $result = $result[0];
-            $chr = $result->chrom;
+            $chr = $result->CHR;
             $chr = substr($chr,3);
-            $start = $result->txStart;
-            $end = $result->txEnd;
+            $start = $result->start;
+            $end = $result->end;
             $cmd = "tabix {$input} {$chr}:{$start}-{$end} -h > {$output}";
             exec($cmd);
             $row_nums = count(file($output));
