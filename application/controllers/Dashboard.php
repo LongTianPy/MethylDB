@@ -395,7 +395,7 @@ class Dashboard extends CI_Controller {
             $start = $this->input->post('from');
             $end = $this->input->post('to');
         }
-        $sql = "select * from hg19 where chrom='chr'{$chr} and txStart>{$start} and txEnd<{$end}";
+        $sql = "select * from hg19 where chrom='chr{$chr}' and txStart>{$start} and txEnd<{$end}";
         $result = $this->db->query($sql)->result();
         $transcripts = array();
         foreach ($result as $row) {
