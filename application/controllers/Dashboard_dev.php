@@ -56,6 +56,9 @@ class Dashboard_dev extends CI_Controller {
             }
             $this->load->view('dashboardView_dev',$page_data);
         }
+        else{
+            $this->load->view('dashboardView_dev');
+        }
     }
 
     public function search_gene($gene){
