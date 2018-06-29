@@ -52,6 +52,7 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     Plotly.react('myChart',data,layout);
 }
 
-makeplot(datafile);
+var file=datafile;
+makeplot(file);
 
 
