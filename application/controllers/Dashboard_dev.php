@@ -63,7 +63,7 @@ class Dashboard_dev extends CI_Controller {
 
     public function search_gene($gene){
         $sql = "select * from hg19 where geneName='{$gene}' order by exonCount desc limit 1";
-        $result = $this->db->query($sql);
+        $result = $this->db->query($sql)->row(0);
         $gene_id = $result->transcript_ID;
         $exonCount = $result->exonCount;
         $txStart = $result->txStart;
@@ -249,9 +249,9 @@ class Dashboard_dev extends CI_Controller {
         $result = $this->db->query($sql)->result();
         print_r($result);
         if (count($result)>0){
-            $chr = $result->CHR;
-            $start = $result->start;
-            $end = $result->end;
+            $chr = $result[0]->CHR;
+            $start = $result[0]->start;
+            $end = $result[0]->end;
             $new_start = $start - $up;
             $new_end = $end + $down;
 //            $sql = "select * from Gene where end>={$new_start} and start<={$new_end}";
