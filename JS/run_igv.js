@@ -25,8 +25,8 @@ var options = {
             sourceType: "file",
             type: "variant",
             format: "vcf",
-            url: "/home/long-lamp-username/MethylDB/sorted_cpg.txt.gz",
-            indexURL:  "/home/long-lamp-username/MethylDB/sorted_cpg.txt.gz.tbi",
+            url: "/MethylDB/Data/sorted_cpg.txt.gz",
+            indexURL:  "/MethylDB/Data/sorted_cpg.txt.gz.tbi",
         }
     ]
 
