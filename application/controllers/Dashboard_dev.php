@@ -27,8 +27,8 @@ class Dashboard_dev extends CI_Controller {
                     'place_holder'=>$place_holder,
                     'igv'=>1,
                     'chr'=>$data['chr'],
-                    'start'=>$data['start'],
-                    'end'=>$data['end'],
+                    'start'=>$data['from'],
+                    'end'=>$data['to'],
                 );
             }else{
                 $page_data = array(
@@ -45,8 +45,8 @@ class Dashboard_dev extends CI_Controller {
                     'place_holder'=>$place_holder,
                     'igv'=>1,
                     'chr'=>$data['chr'],
-                    'start'=>$data['start'],
-                    'end'=>$data['end'],
+                    'start'=>$data['from'],
+                    'end'=>$data['to'],
                 );
             }else{
                 $page_data = array(
