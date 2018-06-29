@@ -163,7 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 <script src="/MethylDB/JS/jquery.js" type="text/javascript"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/popper.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/bootstrap.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/feather.js" type="text/javascript"></script>
