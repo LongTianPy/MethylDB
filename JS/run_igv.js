@@ -6,7 +6,6 @@ var options = {
         fastaURL: "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/1kg_v37/human_g1k_v37_decoy.fasta",
         cytobandURL: "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/b37/b37_cytoband.txt"
     },
-    locus: "myc",
     tracks: [
         {
             name: "Genes",
@@ -22,11 +21,10 @@ var options = {
 
         {
             name: "DNA Methylation CpG sites",
-            sourceType: "file",
-            type: "variant",
             format: "vcf",
             url: "/MethylDB/Data/sorted_cpg.txt.gz",
             indexURL:  "/MethylDB/Data/sorted_cpg.txt.gz.tbi",
+            type: "variant"
         }
     ]
 
