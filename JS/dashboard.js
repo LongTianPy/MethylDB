@@ -1,4 +1,4 @@
-function makeplot(){
+function makeplot(datafile){
     var file = datafile;
     Plotly.d3.csv(file,function(data){processData(data)});
 };
@@ -52,6 +52,6 @@ function makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal){
     Plotly.react('myChart',data,layout);
 }
 
-makeplot();
+makeplot(datafile);
 
 
