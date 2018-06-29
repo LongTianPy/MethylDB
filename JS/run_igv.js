@@ -22,9 +22,11 @@ var options = {
         {
             name: "DNA Methylation CpG sites",
             format: "bed",
+            order: 10,
             url: "/MethylDB/Data/sorted_cpg.txt.gz",
             indexURL:  "/MethylDB/Data/sorted_cpg.txt.gz.tbi",
-            type: "annotation"
+            type: "annotation",
+            displayMode: "EXPANDED"
         }
     ]
 
