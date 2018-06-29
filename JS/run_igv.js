@@ -1,6 +1,6 @@
 var div = document.getElementById('igvDiv');
 var options = {
-    locus: chr + ":" + start + "-" + end,
+    locus: chromosome + ":" + start + "-" + end,
     reference: {
         id: "hg19",
         fastaURL: "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/1kg_v37/human_g1k_v37_decoy.fasta",
@@ -25,8 +25,8 @@ var options = {
             sourceType: "file",
             type: "variant",
             format: "vcf",
-            url: "/home/long-lamp-username/MethylDB/sorted_cpg.txt.gz",
-            indexURL:  "/home/long-lamp-username/MethylDB/sorted_cpg.txt.gz.tbi",
+            url: "file://home/long-lamp-username/MethylDB/sorted_cpg.txt.gz",
+            indexURL:  "file://home/long-lamp-username/MethylDB/sorted_cpg.txt.gz.tbi",
         }
     ]
 

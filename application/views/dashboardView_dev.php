@@ -175,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
 <?php
 if (isset($igv)){
-    echo "<script>var chr={$chr}; var start={$start}; var end={$end}</script>";
+    echo "<script>var chromosome={$chr}; var start={$start}; var end={$end}</script>";
     echo "<script src='/MethylDB/JS/run_igv.js' type='text/javascript'></script>";
 }elseif (isset($js_parameters)){
     echo $js_parameters;
