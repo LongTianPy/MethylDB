@@ -310,9 +310,10 @@ class Dashboard extends CI_Controller {
                 $datafile = shell_exec($cmd);
                 $this->session->set_userdata($datafile);
                 $this->session->set_userdata($cpg_id);
-                echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
-                echo "<a id='cpg_id' style='display: none' value='{$return_cpg}'>{$return_cpg}</a>";
-                $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
+//                echo "<a id='datafile' style='display: none' value='{$datafile}'>{$datafile}</a>";
+//                echo "<a id='cpg_id' style='display: none' value='{$return_cpg}'>{$return_cpg}</a>";
+                $call_this_script = "<script>var datafile='{$datafile}'; var cpg_id='{$return_cpg}'</script>";
+                $call_this_script .= '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
                 $data = array('script'=>$call_this_script,);
             }else{
                 $data = array('no_result' => 0,);
