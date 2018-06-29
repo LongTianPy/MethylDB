@@ -21,8 +21,10 @@ var options = {
 
         {
             name: "DNA Methylation CpG sites",
+            format: "vcf",
             url: "/MethylDB/Data/sorted_cpg.txt.gz",
             indexURL:  "/MethylDB/Data/sorted_cpg.txt.gz.tbi",
+            type: "variant"
         }
     ]
 
