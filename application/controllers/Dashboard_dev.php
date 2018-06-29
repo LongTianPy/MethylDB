@@ -247,6 +247,7 @@ class Dashboard_dev extends CI_Controller {
         select * from Gene where gene='{$gene}'
         ";
         $result = $this->db->query($sql)->result();
+        print_r($result);
         if (count($result)>0){
             $chr = $result->CHR;
             $start = $result->start;
