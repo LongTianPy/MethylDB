@@ -127,8 +127,7 @@ class Dashboard_dev extends CI_Controller {
             if ($row_nums > 1){
                 $cmd = "python {$python_scipt} {$output}";
                 $datafile = shell_exec($cmd);
-                $this->session->set_userdata($datafile);
-                $this->session->set_userdata($cpg_id);
+                $datafile = str_replace("\n","",$datafile);
                 $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
                 $js_parameters = "<script>var datafile='{$datafile}'; var cpg_id='{$return_cpg}'</script>";
                 $data = array('script'=>$call_this_script,
