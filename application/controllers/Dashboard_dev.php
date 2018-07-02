@@ -243,6 +243,12 @@ class Dashboard_dev extends CI_Controller {
         strtoupper($gene);
         $up = $this->input->get('upstream');
         $down = $this->input->get('downstream');
+        if ($up==''){
+            $up = 0;
+        }
+        if ($down==''){
+            $down = 0;
+        }
         $sql = "
         select * from Gene where gene='{$gene}'
         ";
