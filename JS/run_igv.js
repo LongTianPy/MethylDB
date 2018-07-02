@@ -22,8 +22,8 @@ var options = {
         {
             name: "DNA Methylation CpG sites",
             format: "bed",
-            url: "/MethylDB/Data/modified_bed_cpg.txt.gz",
-            indexURL:  "/MethylDB/Data/modified_bed_cpg.txt.gz.tbi",
+            url: "/MethylDB/Data/modified_cpg.txt.gz",
+            indexURL:  "/MethylDB/Data/modified_cpg.txt.gz.tbi",
         }
     ]
 
