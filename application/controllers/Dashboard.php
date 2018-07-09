@@ -18,7 +18,7 @@ class Dashboard_dev extends CI_Controller {
                     'msg' => "No record found, please modify your search.",
                 );
             }
-            $this->load->view('dashboardView_dev',$page_data);
+            $this->load->view('dashboardView',$page_data);
         }
         elseif (isset($_GET['from']) and isset($_GET['to'])){
             $data = $this->search_by_region();
