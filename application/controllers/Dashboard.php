@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard_dev extends CI_Controller {
+class Dashboard extends CI_Controller {
     public function index(){
         $place_holder = "<img src='/MethylDB/IMG/placeholding_img.png' id='placeholder_img'>";
         if (isset($_GET['cpg_id'])){
