@@ -117,6 +117,9 @@ $(document).ready(function () {
         if (track.name=="DNA Methylation CpG sites") {
             popoverData.forEach(function (nameValue) {
                 if (nameValue.name == "Name"){
+                    var shell = require('shelljs');
+                    shell.exec('echo testing_node_js_shelljs > /home/long-lamp-username/Downloads/test.txt')
+                    shell.exec('python /home/long-lamp-username/test.py')
                     var cpg_id = nameValue.value;
                     var file = "/MethylDB/Result/" + cpg_id + ".txt";
                     Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
