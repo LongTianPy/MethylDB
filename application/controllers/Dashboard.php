@@ -121,24 +121,6 @@ class Dashboard extends CI_Controller {
             $data = array('script'=>$call_this_script,
                 'js_parameters'=>$js_parameters,
             );
-//            $result = $result[0];
-//            $chr = $result->CHR;
-//            $position = $result->MAPINFO;
-//            $from = $position-1;
-//            $to = $position+1;
-//            $cmd = "tabix {$input} {$chr}:{$from}-{$to} -h > {$output}";
-//            exec($cmd);
-//            $row_nums = count(file($output));
-//            settype($row_nums, 'integer');
-//            if ($row_nums > 1){
-//                $cmd = "python {$python_scipt} {$output}";
-//                $datafile = shell_exec($cmd);
-//                $datafile = str_replace("\n","",$datafile);
-//                $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
-//                $js_parameters = "<script>var datafile='{$datafile}'; var cpg_id='{$return_cpg}'</script>";
-//                $data = array('script'=>$call_this_script,
-//                    'js_parameters'=>$js_parameters,
-//                );
         }else{
             $data = array('no_result' => 0,);
         }
