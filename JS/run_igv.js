@@ -123,7 +123,7 @@ $(document).ready(function () {
     browser.on('trackclick',function (track,popoverData) {
 
         if (track.name=="DNA Methylation CpG sites") {
-            $("$myChart").empty();
+            $("#myChart").empty();
             popoverData.forEach(function (nameValue) {
                 if (nameValue.name == "Name"){
                     // var shell = require('shelljs');
