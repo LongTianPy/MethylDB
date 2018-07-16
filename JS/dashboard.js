@@ -1,5 +1,5 @@
-function makeplot(datafile){
-    var file = datafile;
+function makeplot(cpg_id){
+    var file = "/MethylDB/Result/" + cpg_id + ".txt";
     Plotly.d3.csv(file,function(data){processData(data)});
 };
 function processData(allRows){
