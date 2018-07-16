@@ -124,20 +124,21 @@ $(document).ready(function () {
         $("#myChart").empty();
         if (track.name=="DNA Methylation CpG sites") {
             popoverData.forEach(function (nameValue) {
-                if (nameValue.name == "Name"){
-                    // var shell = require('shelljs');
-                    // shell.exec('echo testing_node_js_shelljs > /home/long-lamp-username/Downloads/test.txt')
-                    // shell.exec('python /home/long-lamp-username/test.py')
-                    var cpg_id = nameValue.value;
-                    var file = "/MethylDB/Result/cpg_result/" + cpg_id + ".txt";
-                    if (FileExists(file)){
-                        Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
-                    } else {
-                        $("#placeholder_img").hide();
-                        $("#myChart").html("<div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
+                if (nameValue.name){
+                    if (nameValue.name == "Name"){
+                        // var shell = require('shelljs');
+                        // shell.exec('echo testing_node_js_shelljs > /home/long-lamp-username/Downloads/test.txt')
+                        // shell.exec('python /home/long-lamp-username/test.py')
+                        var cpg_id = nameValue.value;
+                        var file = "/MethylDB/Result/cpg_result/" + cpg_id + ".txt";
+                        if (FileExists(file)){
+                            Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
+                        } else {
+                            $("#myChart").html("<div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
+                        }
                     }
-
                 }
+
             })
         }
     })
