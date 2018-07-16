@@ -81,7 +81,6 @@ $(document).ready(function () {
         Plotly.react('myChart',data,layout);
     }
 
-
     var div = document.getElementById('igvDiv');
     var options = {
         reference: {
@@ -112,6 +111,19 @@ $(document).ready(function () {
         ]
 
     };
+
+    var FileExists = function (filepath) {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', filepath, false);
+        http.send();
+        return http.status!=404;
+    }
+
+    var nodata = function () {
+        var div = document.getElementById('myChart');
+        div.html("<div class='d-flex justify-content-center'><h2>No Data associated to this CpG site</h2></div>")
+    }
+
     var browser = igv.createBrowser(div, options);
     browser.on('trackclick',function (track,popoverData) {
         if (track.name=="DNA Methylation CpG sites") {
@@ -122,7 +134,12 @@ $(document).ready(function () {
                     // shell.exec('python /home/long-lamp-username/test.py')
                     var cpg_id = nameValue.value;
                     var file = "/MethylDB/Result/cpg_result/" + cpg_id + ".txt";
-                    Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
+                    if (FileExists(file)){
+                        Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
+                    } else {
+                        nodata();
+                    }
+
                 }
             })
         }
