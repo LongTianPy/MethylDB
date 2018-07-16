@@ -77,7 +77,7 @@ $(document).ready(function () {
             },
             boxmode: 'group'
         }
-        // document.getElementById("placeholder_img").style.display = "none";
+        document.getElementById("placeholder_img").style.display = "none";
         Plotly.newPlot('myChart',data,layout);
     }
 
