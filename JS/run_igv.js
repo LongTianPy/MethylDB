@@ -119,11 +119,6 @@ $(document).ready(function () {
         return http.status!=404;
     }
 
-    var nodata = function () {
-        var div = document.getElementById('myChart');
-        div.html("<div class='d-flex justify-content-center'><h2>No Data associated to this CpG site</h2></div>")
-    }
-
     var browser = igv.createBrowser(div, options);
     browser.on('trackclick',function (track,popoverData) {
         if (track.name=="DNA Methylation CpG sites") {
@@ -137,7 +132,7 @@ $(document).ready(function () {
                     if (FileExists(file)){
                         Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
                     } else {
-                        nodata();
+                        $("#myChart").html("<div class='d-flex justify-content-center'><h2>No Data associated to this CpG site</h2></div>")
                     }
 
                 }
