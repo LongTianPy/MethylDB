@@ -133,7 +133,7 @@ $(document).ready(function () {
                         if (FileExists(file)){
                             Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
                         } else {
-                            $("#myChart").html("<div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
+                            $("#myChart").html("<img src='/MethylDB/IMG/placeholding_img.png' id='placeholder_img' style='display: none;'><div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
                         }
                     }
                 }
