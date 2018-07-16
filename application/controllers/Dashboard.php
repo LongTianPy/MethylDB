@@ -117,7 +117,7 @@ class Dashboard extends CI_Controller {
         $result = $this->db->query($sql)->result();
         if (count($result)>0){
             $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
-            $js_parameters = "<script>var cpg_id='{$cpg_id}'</script>";
+            $js_parameters = "<script>var cpg_id={$cpg_id}</script>";
             $data = array('script'=>$call_this_script,
                 'js_parameters'=>$js_parameters,
             );
