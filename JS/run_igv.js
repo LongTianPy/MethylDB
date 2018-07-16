@@ -119,7 +119,7 @@ $(document).ready(function () {
         return http.status!=404;
     }
 
-    var browser = igv.createBrowser(div.get(0), options);
+    var browser = igv.createBrowser(div, options);
     browser.on('trackclick',function (track,popoverData) {
         if (track.name=="DNA Methylation CpG sites") {
             popoverData.forEach(function (nameValue) {
