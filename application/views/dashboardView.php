@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
                                 <div class="card-body">
-                                    <form method="get" id="form_search_by_id" action="Dashboard_dev">
+                                    <form method="get" id="form_search_by_id" action="Dashboard">
                                         <div class="form-group">
                                             <label for="cpg_id">CpG probe ID</label>
                                             <input type="text" class="form-control" name="cpg_id" id="cpg_id" placeholder="e.g. cg00000029" required>
@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">
                                 <div class="card-body">
-                                    <form method="get" id="form_search_by_gene" action="Dashboard_dev">
+                                    <form method="get" id="form_search_by_gene" action="Dashboard">
                                         <div class="form-group">
                                             <label for="gene">Gene name</label>
                                             <input type="text" class="form-control" name="gene" id="gene" placeholder="e.g. EGFR" required>
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
                                 <div class="card-body">
-                                    <form method="get" id="form-search_by_region" action="Dashboard_dev">
+                                    <form method="get" id="form-search_by_region" action="Dashboard">
                                         <div class="form-group">
                                             <label for="chr_id">Chromosome</label>
                                             <select class="form-control" id="chr_id" name="chr_id">
