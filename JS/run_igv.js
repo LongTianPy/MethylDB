@@ -132,7 +132,10 @@ $(document).ready(function () {
                     if (FileExists(file)){
                         Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
                     } else {
-                        $("#myChart").html("<div class='d-flex justify-content-center'><h2>No Data associated to this CpG site</h2></div>");
+                        var markup = "<table class=\"igv-popover-table\">";
+                        markup += "<tr><td class='igv-popover-td'><div class='igv-popover-name-value'><span class='igv-popover-name'>" + nameValue.name + "</span>" + "<span class='igv-popover-value'>No Data</span>" + "</div></td></tr>";
+                        markup += "</table>";
+                        return markup;
                     }
 
                 }
