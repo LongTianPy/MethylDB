@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?php echo base_url(); ?>">MethylDB</a>
     <span class="w-100 navbar-text">Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</span>
+    <span>And we are in a different place!</span>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="index.php/About">About</a>
