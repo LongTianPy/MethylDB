@@ -121,6 +121,7 @@ $(document).ready(function () {
 
     var browser = igv.createBrowser(div, options);
     browser.on('trackclick',function (track,popoverData) {
+
         if (track.name=="DNA Methylation CpG sites") {
             popoverData.forEach(function (nameValue) {
                 if (nameValue.name == "Name"){
@@ -132,7 +133,8 @@ $(document).ready(function () {
                     if (FileExists(file)){
                         Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
                     } else {
-                        $("#myChart").append("<div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
+                        $("#placeholder_img").hide();
+                        $("#myChart").html("<div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
                     }
 
                 }
