@@ -121,7 +121,6 @@ $(document).ready(function () {
 
     var browser = igv.createBrowser(div, options);
     browser.on('trackclick',function (track,popoverData) {
-        $("#myChart").html('');
         if (track.name=="DNA Methylation CpG sites") {
             popoverData.forEach(function (nameValue) {
                 if (nameValue.name){
