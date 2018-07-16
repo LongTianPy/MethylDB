@@ -36,7 +36,7 @@ class Dashboard extends CI_Controller {
                     'msg' => "No record found, please modify your search.",
                 );
             }
-            $this->load->view('dashboardView_dev',$page_data);
+            $this->load->view('dashboardView',$page_data);
         }
         elseif (isset($_GET['gene'])){
             $data = $this->search_by_gene();
@@ -54,10 +54,10 @@ class Dashboard extends CI_Controller {
                     'msg' => "No record found, please modify your search.",
                 );
             }
-            $this->load->view('dashboardView_dev',$page_data);
+            $this->load->view('dashboardView',$page_data);
         }
         else{
-            $this->load->view('dashboardView_dev');
+            $this->load->view('dashboardView');
         }
     }
 
@@ -178,8 +178,5 @@ class Dashboard extends CI_Controller {
     }
 
 }
-
-
-
 ?>
 <!DOCTYPE html>
