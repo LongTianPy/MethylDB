@@ -139,9 +139,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <button class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
+                        <?php
+                        if (isset($download)){
+                            echo "<a class='btn btn-sm btn-outline-secondary' href='{$download}' download>Export</a>";
+                        }else{
+                            echo "<a class=\"btn btn-sm btn-outline-secondary\">Export</a>";
+                        }
+                        ?>
                     </div>
-                </div>
+                ort</b
             </div>
             <?php
             if (isset($igv)){

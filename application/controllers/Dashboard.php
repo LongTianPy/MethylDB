@@ -110,16 +110,20 @@ class Dashboard extends CI_Controller {
             $return_cpg = $this->input->get('cpg_id');
             $cpg_id = $this->input->get('cpg_id');
         }
+        strtolower($return_cpg);
         settype($cpg_id,'string');
         strtolower($cpg_id);
         $cpg_id = "'".$cpg_id."'";
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
         $result = $this->db->query($sql)->result();
         if (count($result)>0){
+            $downloadfile = $return_cpg.".txt";
+            exec("cp /data1/MethylDB/CpG/cpg_result/{$return_cpg}.txt /var/www/html/MethylDB/tmp/{$return_cpg}.txt");
             $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
             $js_parameters = "<script>var cpg_id={$cpg_id}</script>";
             $data = array('script'=>$call_this_script,
                 'js_parameters'=>$js_parameters,
+                'download' => '/MethylDB/tmp/'.$downloadfile,
             );
         }else{
             $data = array('no_result' => 0,);
@@ -134,10 +138,13 @@ class Dashboard extends CI_Controller {
         $chr = $this->input->get('chr_id');
         $start = $this->input->get('from');
         $end = $this->input->get('to');
+        $file = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$start} {$end}");
+        $file = str_replace("\n","",$file);
         $final_result = array(
             'chr' => $chr,
             'from' => $start,
             'to' => $end,
+            'download' => '/MethylDB/tmp/' . $file,
         );
         return $final_result;
     }
@@ -166,10 +173,13 @@ class Dashboard extends CI_Controller {
             $end = $result[0]->end;
             $new_start = $start - $up;
             $new_end = $end + $down;
+            $file = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$new_start} {$new_end}");
+            $file = str_replace("\n","",$file);
             $data = array(
                 'chr' => $chr,
                 'from' => $new_start,
                 'to' => $new_end,
+                'download' => '/MethylDB/tmp/'. $file,
             );}
         else {
             $data = array('no_result'=>0);
