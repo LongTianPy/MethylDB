@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller {
                     'place_holder' => $place_holder,
                     'script' => $data['script'],
                     'js_parameters'=>$data['js_parameters'],
+                    'download' => $data['download'],
                 );
             }else{
                 $page_data = array(
@@ -29,6 +30,7 @@ class Dashboard extends CI_Controller {
                     'chr'=>$data['chr'],
                     'start'=>$data['from'],
                     'end'=>$data['to'],
+                    'download' => $data['download'],
                 );
             }else{
                 $page_data = array(
@@ -47,6 +49,7 @@ class Dashboard extends CI_Controller {
                     'chr'=>$data['chr'],
                     'start'=>$data['from'],
                     'end'=>$data['to'],
+                    'download' => $data['download'],
                 );
             }else{
                 $page_data = array(
