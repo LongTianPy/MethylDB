@@ -120,8 +120,9 @@ class Dashboard extends CI_Controller {
         $sql = "select CHR,MAPINFO from Probeset where Probeset_ID={$cpg_id}";
         $result = $this->db->query($sql)->result();
         if (count($result)>0){
-            $downloadfile = $return_cpg.".txt";
-            exec("cp /data1/MethylDB/CpG/cpg_result/{$return_cpg}.txt /var/www/html/MethylDB/tmp/{$return_cpg}.txt");
+            $chr = $result[0]->CHR;
+            $mapinfo = $result[0]->MAPINFO;
+            $downloadfile = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$mapinfo} {$mapinfo}");
             $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
             $js_parameters = "<script>var cpg_id={$cpg_id}</script>";
             $data = array('script'=>$call_this_script,
