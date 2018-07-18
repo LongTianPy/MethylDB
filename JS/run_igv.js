@@ -131,6 +131,7 @@ $(document).ready(function () {
                         var cpg_id = nameValue.value;
                         var file = "/MethylDB/Result/cpg_result/" + cpg_id + ".txt";
                         if (FileExists(file)){
+                            $("#myChart").html("<img src='/MethylDB/IMG/placeholding_img.png' id='placeholder_img'>")
                             Plotly.d3.csv(file,function(data){processData(data,cpg_id)});
                         } else {
                             $("#myChart").html("<img src='/MethylDB/IMG/placeholding_img.png' id='placeholder_img' style='display: none;'><div class='d-flex justify-content-center'><h2>No Data Found For This CpG Site</h2></div>");
