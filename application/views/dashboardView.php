@@ -143,7 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         if (isset($download)){
                             echo "<button class='btn btn-sm btn-outline-secondary' href='{$download}' download>Export</button>";
                         }else{
-                            echo "<button class=\"btn btn-sm btn-outline-secondary\">Export</button>";
+                            echo "<button class='btn btn-sm btn-outline-secondary'>Export</button>";
                         }
                         ?>
                     </div>
