@@ -141,9 +141,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <button class="btn btn-sm btn-outline-secondary">Share</button>
                         <?php
                         if (isset($download)){
-                            echo "<button class='btn btn-sm btn-outline-secondary' href='{$download}' download>Export</button>";
+                            echo "<a class='btn btn-sm btn-outline-secondary' href='{$download}' download>Export</a>";
                         }else{
-                            echo "<button class='btn btn-sm btn-outline-secondary'>Export</button>";
+                            echo "<a class='btn btn-sm btn-outline-secondary'>Export</a>";
                         }
                         ?>
                     </div>
