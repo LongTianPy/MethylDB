@@ -162,10 +162,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
                 ?>
             </div>
-            <h2>Methylation beta values</h2>
-            <table class="table table-striped table-sm">
+            <?php
+            if (isset($download)){
+                echo "<div class='my-4 w-100' style='width:900px'>";
+                echo "<h2>Statistical analysis</h2>>";
+                echo "<div id='stats_output'>";
+                echo "</div>";
+                echo "</div>";
+            }
 
-            </table>
+            ?>
         </main>
     </div>
 </div>
@@ -180,6 +186,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript" src="https://igv.org/web/release/1.0.9/igv-1.0.9.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js" type="text/javascript"></script>
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
+<script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.js" type="text/javascript"></script>
+<script src="/MethylDB/JS/papa_parse.js" type="text/javascript"></script>
 <?php
 if (isset($igv)){
     echo "<script>var chromosome={$chr}; var start={$start}; var end={$end}</script>";

@@ -104,6 +104,8 @@ $(document).ready(function(){
         }
         document.getElementById("placeholder_img").style.display = "none";
         Plotly.react('myChart', data, layout);
+        var ttest_result=tTestTwoSample(value_tumor,value_normal,0).toFixed(3)
+        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples</td><td>' + ttest_result +'</td></tr></table>');
     }
     var file=cpg_id;
     makeplot(file);
