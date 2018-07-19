@@ -63,11 +63,11 @@ $(document).ready(function(){
             row = allRows[i];
             if (row["TumorNormal"] == 'Tumor') {
                 acronym_tumor.push(row["Acronym"]);
-                value_tumor.push(row["Value"]);
+                value_tumor.push(parseFloat(row["Value"]));
             }
             else {
                 acronym_normal.push(row["Acronym"]);
-                value_normal.push(row["Value"]);
+                value_normal.push(parseFloat(row["Value"]));
             }
 
         }
