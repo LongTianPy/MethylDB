@@ -104,11 +104,11 @@ $(document).ready(function(){
         }
         document.getElementById("placeholder_img").style.display = "none";
         Plotly.react('myChart', data, layout);
-        var mean = ss.mean(value_normal);
+        var mean = ss.mean(value_tumor);
         console.log(mean);
         // var tscore=jStat.tscore(mean,value_tumor);
         // console.log(tscore);
-        var pvalue = jStat.ttest(mean,value_tumor,2);
+        var pvalue = jStat.ttest(mean,value_normal,2);
         console.log(pvalue);
         $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples</td><td>' + pvalue +'</td></tr></table>');
     }
