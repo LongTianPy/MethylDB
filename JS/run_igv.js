@@ -142,4 +142,13 @@ $(document).ready(function () {
             })
         }
     })
+    var popoverDetail = {
+        content: "Please right-click and use 'Save link as' to save the file to a selected folder.",
+        trigger: 'hover',
+        animation: false,
+        placement: 'left',
+        html: true,
+        delay: {"show":500,"hide":100},
+    };
+    $('#export_button').popover(popoverDetail);
 });

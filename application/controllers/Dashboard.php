@@ -122,7 +122,7 @@ class Dashboard extends CI_Controller {
         if (count($result)>0){
             $chr = $result[0]->CHR;
             $mapinfo = $result[0]->MAPINFO;
-            $downloadfile = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$mapinfo} {$mapinfo}");
+            $downloadfile = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$mapinfo} {$mapinfo} {$return_cpg}");
             $call_this_script = '<script src="/MethylDB/JS/dashboard.js" type="text/javascript"></script>';
             $js_parameters = "<script>var cpg_id={$cpg_id}</script>";
             $data = array('script'=>$call_this_script,
@@ -177,7 +177,7 @@ class Dashboard extends CI_Controller {
             $end = $result[0]->end;
             $new_start = $start - $up;
             $new_end = $end + $down;
-            $file = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$new_start} {$new_end}");
+            $file = shell_exec("python /home/long-lamp-username/Mayo_toolbox/compress_selected_CpG.py {$chr} {$new_start} {$new_end} {$gene}");
             $file = str_replace("\n","",$file);
             $data = array(
                 'chr' => $chr,
