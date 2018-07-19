@@ -104,7 +104,9 @@ $(document).ready(function(){
         }
         document.getElementById("placeholder_img").style.display = "none";
         Plotly.react('myChart', data, layout);
-        var tscore=jStat.tscore(ss.mean(value_normal),value_tumor);
+        var mean = ss.mean(value_normal);
+        console.log(mean);
+        var tscore=jStat.tscore(mean,value_tumor);
         console.log(tscore);
         var pvalue = jStat.ttest(tscore,value_tumor.length+value_normal.length-2,2);
         console.log(pvalue);
