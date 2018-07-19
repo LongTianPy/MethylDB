@@ -108,7 +108,7 @@ $(document).ready(function(){
         console.log(mean);
         // var tscore=jStat.tscore(mean,value_tumor);
         // console.log(tscore);
-        var pvalue = ss.tTest(value_tumor,mean);
+        var pvalue = jStat.ttest(mean,value_tumor,2);
         console.log(pvalue);
         $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples</td><td>' + pvalue +'</td></tr></table>');
     }
