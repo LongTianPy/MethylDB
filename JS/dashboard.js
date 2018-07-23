@@ -61,15 +61,16 @@ $(document).ready(function(){
         var acronym_tumor = [], acronym_normal = [], value_tumor = [], value_normal = [], cpg_id = '';
         for (var i = 0; i < allRows.length; i++) {
             row = allRows[i];
-            if (row["TumorNormal"] == 'Tumor') {
-                acronym_tumor.push(row["Acronym"]);
-                value_tumor.push(parseFloat(row["Value"]));
+            if (row["Value"] != 'nan'){
+                if (row["TumorNormal"] == 'Tumor') {
+                    acronym_tumor.push(row["Acronym"]);
+                    value_tumor.push(parseFloat(row["Value"]));
+                }
+                else {
+                    acronym_normal.push(row["Acronym"]);
+                    value_normal.push(parseFloat(row["Value"]));
+                }
             }
-            else {
-                acronym_normal.push(row["Acronym"]);
-                value_normal.push(parseFloat(row["Value"]));
-            }
-
         }
         console.log("Acronym_tumor", acronym_tumor, "Acronym_normal", acronym_normal, "Value_tumor", value_tumor, "Value_normal", value_normal);
         makePlotly(acronym_tumor, value_tumor, acronym_normal, value_normal);

@@ -186,6 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript" src="https://igv.org/web/release/1.0.9/igv-1.0.9.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js" type="text/javascript"></script>
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
+<script src="/MethylDB/Result/pvalues.json" type="text/javascript"></script>
 <script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/papa_parse.js" type="text/javascript"></script>
