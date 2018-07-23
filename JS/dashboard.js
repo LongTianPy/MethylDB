@@ -58,30 +58,24 @@ $(document).ready(function(){
     };
     var processData = function(allRows) {
         console.log(allRows);
-        var acronym_tumor = [], acronym_normal = [], value_tumor = [], value_normal = [], cpg_id = '', value_tumor_notnan = [], value_normal_notnan = [];
+        var acronym_tumor = [], acronym_normal = [], value_tumor = [], value_normal = [], cpg_id = '';
         for (var i = 0; i < allRows.length; i++) {
             row = allRows[i];
-            if (row["TumorNormal"] == 'Tumor') {
-                acronym_tumor.push(row["Acronym"]);
-                value_tumor.push(parseFloat(row["Value"]));
-                if (row["Value"] != 'nan'){
-                    value_tumor_notnan.push(parseFloat(row["Value"]));
+            if (row["Value"] != 'nan'){
+                if (row["TumorNormal"] == 'Tumor') {
+                    acronym_tumor.push(row["Acronym"]);
+                    value_tumor.push(parseFloat(row["Value"]));
+                }
+                else {
+                    acronym_normal.push(row["Acronym"]);
+                    value_normal.push(parseFloat(row["Value"]));
                 }
             }
-            else {
-                acronym_normal.push(row["Acronym"]);
-                value_normal.push(parseFloat(row["Value"]));
-                if (row["Value"] != 'nan'){
-                    value_normal_notnan.push(parseFloat(row["Value"]));
-                }
-            }
-
         }
         console.log("Acronym_tumor", acronym_tumor, "Acronym_normal", acronym_normal, "Value_tumor", value_tumor, "Value_normal", value_normal);
-        console.log("value_tumor_notnan",value_tumor_notnan,"value_normal_notnan",value_normal_notnan);
-        makePlotly(acronym_tumor, value_tumor, acronym_normal, value_normal,value_tumor_notnan,value_normal_notnan);
+        makePlotly(acronym_tumor, value_tumor, acronym_normal, value_normal);
     };
-    var makePlotly = function(acronym_tumor,value_tumor,acronym_normal,value_normal,value_tumor_notnan,value_normal_notnan) {
+    var makePlotly = function(acronym_tumor,value_tumor,acronym_normal,value_normal) {
         var plotDiv = document.getElementById("myChart");
         var trace1 = {
             y: value_tumor,
@@ -111,13 +105,13 @@ $(document).ready(function(){
         }
         document.getElementById("placeholder_img").style.display = "none";
         Plotly.react('myChart', data, layout);
-        var mean = ss.mean(value_tumor_notnan);
+        var mean = ss.mean(value_tumor);
         console.log(mean);
         // var tscore=jStat.tscore(mean,value_tumor);
         // console.log(tscore);
-        var pvalue = jStat.ttest(mean,value_normal_notnan,2);
+        var pvalue = jStat.ttest(mean,value_normal,2);
         console.log(pvalue);
-        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples</td><td>' + pvalue +'</td></tr></table>');
+        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples</td><td></td><td>P-value = ' + pvalue +'</td></tr></table>');
     }
     var file=cpg_id;
     makeplot(file);
