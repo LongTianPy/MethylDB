@@ -111,7 +111,7 @@ $(document).ready(function(){
         // console.log(tscore);
         var pvalue = jStat.ttest(mean,value_normal,2);
         console.log(pvalue);
-        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples</td><td></td><td>P-value = ' + pvalue +'</td></tr></table>');
+        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples: </td><td></td><td>p-value = ' + pvalue +'</td></tr></table>');
     }
     var file=cpg_id;
     makeplot(file);

@@ -34,17 +34,18 @@ $(document).ready(function () {
     var processData = function(allRows,cpg_id){
         console.log(allRows);
         var acronym_tumor=[], acronym_normal=[],value_tumor=[],value_normal=[];
-        for (var i=0; i<allRows.length;i++){
-            row=allRows[i];
-            if (row["TumorNormal"]=='Tumor'){
-                acronym_tumor.push(row["Acronym"]);
-                value_tumor.push(row["Value"]);
+        for (var i = 0; i < allRows.length; i++) {
+            row = allRows[i];
+            if (row["Value"] != 'nan'){
+                if (row["TumorNormal"] == 'Tumor') {
+                    acronym_tumor.push(row["Acronym"]);
+                    value_tumor.push(parseFloat(row["Value"]));
+                }
+                else {
+                    acronym_normal.push(row["Acronym"]);
+                    value_normal.push(parseFloat(row["Value"]));
+                }
             }
-            else {
-                acronym_normal.push(row["Acronym"]);
-                value_normal.push(row["Value"]);
-            }
-
         }
         console.log("Acronym_tumor",acronym_tumor,"Acronym_normal",acronym_normal,"Value_tumor",value_tumor,"Value_normal",value_normal,'cpg_id',cpg_id);
         makePlotly(acronym_tumor,value_tumor,acronym_normal,value_normal,cpg_id);
@@ -79,6 +80,13 @@ $(document).ready(function () {
         }
         document.getElementById("placeholder_img").style.display = "none";
         Plotly.newPlot('myChart',data,layout);
+        var mean = ss.mean(value_tumor);
+        console.log(mean);
+        // var tscore=jStat.tscore(mean,value_tumor);
+        // console.log(tscore);
+        var pvalue = jStat.ttest(mean,value_normal,2);
+        console.log(pvalue);
+        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples: </td><td></td><td>p-value = ' + pvalue +'</td></tr></table>');
     }
 
     var div = document.getElementById('igvDiv');
