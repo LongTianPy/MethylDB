@@ -31,6 +31,17 @@
 // var browser = igv.createBrowser(div, options);
 
 $(document).ready(function () {
+    var loadFile = function(filePath) {
+        var result = null;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", filePath, false);
+        xmlhttp.send();
+        if (xmlhttp.status==200) {
+            result = xmlhttp.responseText;
+        }
+        return result;
+    }
+
     var processData = function(allRows,cpg_id){
         console.log(allRows);
         var acronym_tumor=[], acronym_normal=[],value_tumor=[],value_normal=[];
@@ -80,13 +91,14 @@ $(document).ready(function () {
         }
         document.getElementById("placeholder_img").style.display = "none";
         Plotly.newPlot('myChart',data,layout);
-        var mean = ss.mean(value_tumor);
-        console.log(mean);
-        // var tscore=jStat.tscore(mean,value_tumor);
-        // console.log(tscore);
-        var pvalue = jStat.ttest(mean,value_normal,2);
-        console.log(pvalue);
-        $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples: </td><td></td><td>p-value = ' + pvalue +'</td></tr></table>');
+        // var mean = ss.mean(value_tumor);
+        // console.log(mean);
+        // // var tscore=jStat.tscore(mean,value_tumor);
+        // // console.log(tscore);
+        // var pvalue = jStat.ttest(mean,value_normal,2);
+        // console.log(pvalue);
+        var tablefile = loadFile("/MethylDB/Result/pvalue_tables/" + cpg_id + ".html")
+        $('#stats_output').html(tablefile);
     }
 
     var div = document.getElementById('igvDiv');
