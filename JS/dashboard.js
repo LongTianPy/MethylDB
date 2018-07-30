@@ -57,7 +57,7 @@ $(document).ready(function(){
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", filePath, false);
         xmlhttp.send();
-        if (xmlhttp.status==200) {
+        if (xmlhttp.status==200 || xmlhttp.status==0) {
             result = xmlhttp.responseText;
         }
         return result;
