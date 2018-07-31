@@ -13,6 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="/MethylDB/CSS/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.css">
     <link rel="stylesheet" type="text/css" href="https://igv.org/web/release/1.0.9/igv-1.0.9.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <title>Pan-cancer DNA methylation pattern mining and visualization for biomarker discovery</title>
 </head>
 <body>
@@ -186,7 +188,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript" src="https://igv.org/web/release/1.0.9/igv-1.0.9.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js" type="text/javascript"></script>
 <script src="https://cdn.plot.ly/plotly-latest.js"></script>
-<script src="/MethylDB/Result/pvalues.json" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="application/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="application/javascript"></script>
 <script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js" type="text/javascript"></script>
 <script src="/MethylDB/JS/papa_parse.js" type="text/javascript"></script>

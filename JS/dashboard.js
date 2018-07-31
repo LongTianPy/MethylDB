@@ -136,6 +136,6 @@ $(document).ready(function(){
         delay: {"show":500,"hide":100},
     };
     $('#export_button').popover(popoverDetail);
-
+    $('.table').DataTable();
 });
 
