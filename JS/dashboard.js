@@ -122,7 +122,7 @@ $(document).ready(function(){
         // var pvalue = jStat.ttest(mean,value_normal,2);
         // console.log(pvalue);
         // $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples: </td><td></td><td>p-value = ' + pvalue +'</td></tr></table>');
-        var tablefile = loadFile("/MethylDB/Result/pvalue_tables/" + cpg_id + ".html")
+        var tablefile = loadFile("/MethylDB/Result/pvalues_table_python3/" + cpg_id + ".html")
         $('#stats_output').html(tablefile);
     }
     var file=cpg_id;
@@ -136,6 +136,6 @@ $(document).ready(function(){
         delay: {"show":500,"hide":100},
     };
     $('#export_button').popover(popoverDetail);
-    $('.table').DataTable();
+    
 });
 

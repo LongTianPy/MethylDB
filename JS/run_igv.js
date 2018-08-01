@@ -97,7 +97,7 @@ $(document).ready(function () {
         // // console.log(tscore);
         // var pvalue = jStat.ttest(mean,value_normal,2);
         // console.log(pvalue);
-        var tablefile = loadFile("/MethylDB/Result/pvalue_tables/" + cpg_id + ".html")
+        var tablefile = loadFile("/MethylDB/Result/pvalues_table_python3/" + cpg_id + ".html")
         $('#stats_output').html(tablefile);
     }
 
