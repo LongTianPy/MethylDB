@@ -99,7 +99,7 @@ $(document).ready(function () {
         // console.log(pvalue);
         var tablefile = loadFile("/MethylDB/Result/pvalues_table_python3/" + cpg_id + ".html")
         $('#stats_output').html('<ul><li>Differential methylation between tumor and normal samples</li></ul>');
-        $('#stats_output').html(tablefile);
+        $('#stats_output').append(tablefile);
     }
 
     var div = document.getElementById('igvDiv');
