@@ -123,7 +123,8 @@ $(document).ready(function(){
         // console.log(pvalue);
         // $('#stats_output').html('<table><tr><td>T-test between normal and tumor samples: </td><td></td><td>p-value = ' + pvalue +'</td></tr></table>');
         var tablefile = loadFile("/MethylDB/Result/pvalues_table_python3/" + cpg_id + ".html")
-        $('#stats_output').html(tablefile);
+        $('#stats_output').html('<legend>Differential methylation between tumor and normal samples</legend>')
+        $('#stats_output').append(tablefile);
     }
     var file=cpg_id;
     makeplot(file);
