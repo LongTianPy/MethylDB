@@ -49,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </h5>
                         <div class="card">
                             <div class="card-header" id="search_by_id">
-                                <h6 class="mb-0">
+                                <h7 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_id" aria-expanded="false" aria-controls="form_by_id">
                                         Search by CpG ID
                                     </button>
-                                </h6>
+                                </h7>
                             </div>
                             <div id="form_by_id" class="collapse show" aria-labelledby="search_by_id" data-parent="#search_functions" >
                                 <div class="card-body">
@@ -69,11 +69,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="card">
                             <div class="card-header" id="search_by_gene">
-                                <h6 class="mb-0">
+                                <h7 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_gene" aria-expanded="false" aria-controls="form_by_gene">
                                         Search by gene name
                                     </button>
-                                </h6>
+                                </h7>
                             </div>
                             <div id="form_by_gene" class="collapse" aria-labelledby="search_by_gene" data-parent="#search_functions">
                                 <div class="card-body">
@@ -97,11 +97,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="card">
                             <div class="card-header" id="search_by_region">
-                                <h6 class="mb-0">
+                                <h7 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#form_by_region" aria-expanded="false" aria-controls="form_by_region">
                                         Search by genomic region
                                     </button>
-                                </h6>
+                                </h7>
                             </div>
                             <div id="form_by_region" class="collapse" aria-labelledby="search_by_region" data-parent="#search_functions">
                                 <div class="card-body">
