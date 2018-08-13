@@ -137,4 +137,5 @@ Currently, `/data1/` has 500GB space (75GB taken by MethylDB). MethylDB related 
 T-test results are stored in `/data1/MethylDB/CpG/pvalues_table_python3`. Files are HTML `<table>` components.
 ### Website
 MethylDB is built in a MVC framework called [CodeIgniter](https://www.codeigniter.com/). Note that before getting started, it's better to read the official document of CodeIgniter.  
-The website root is `/var/www/html/MethylDB`. `application/controllers` and `application/views` are the two most important folders here. Controller scripts usually calculate and process to get the content to be printed on the final page and view scripts define how the content are displayed.
+The website root is `/var/www/html/MethylDB`. `CSS`, `JS`, `IMG`'s usage are straightforward by their names.  
+`application/controllers` and `application/views` are the two most important folders here. Controller scripts usually calculate and process to get the content to be printed on the final page and view scripts define how the content are displayed. 
