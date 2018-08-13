@@ -1,7 +1,7 @@
 # MethylDB
 
 [MethylDB](https://methyldb.centralus.cloudapp.azure.com/MethylDB/index.php) is hosted on a Microsoft Azure VM managed by Mayo Clinic. It is developed as an internship project by [@Long Tian](https://github.com/LongTianPy), supervised by Dr. Zhifu Sun started from May 2018.
-It was initially designed as an interface to visualize the DNA methylation data from TCGA. At the time of writing this document, MethylDB is developed as a platform to be able to host different types of data.
+It was initially designed as an interface to visualize the DNA methylation data from TCGA. At the time of writing this document, MethylDB is being developed as a platform to be able to host different types of data.
 
 ## Dependencies
 MethylDB is built in LAMP stack: **L**inux OS Ubuntu 17.10 + **A**pache2 + **M**ySQL + **P**HP.
